@@ -1,0 +1,5 @@
+(* Camments can contain UTF-8 characters like αβγδεζηθικλμνξοπρςστυφχψω *)
+(*  Copyright (C) 2022  Thomas Mertes                               *)
+
+const boolean: alsoOkay is (notOkay and not okay) or okay;
+const integer: leadingZero is 0299792458;  # A leading zero digit does not introduce an octal integer.
