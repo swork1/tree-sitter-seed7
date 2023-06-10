@@ -21,5 +21,19 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.8"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "seed7",
+      "file-types": [
+        "sd7",
+        "s7i"
+      ]
+    },
+    {
+      "theme": {
+        "comment": "purple"
+      }
+    }
+  ]
 }
