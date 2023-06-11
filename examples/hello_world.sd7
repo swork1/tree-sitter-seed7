@@ -1,4 +1,12 @@
+(* This is a comment. *)
+const boolean: okay is TRUE;
+
+(* Comments can (* nest *) as in this example. *)
+const boolean: notOkay is FALSE;
+
 (* Camments can contain UTF-8 characters like αβγδεζηθικλμνξοπρςστυφχψω *)
-(*  Copyright (C) 2022  Thomas Mertes                               *)
-const boolean: alsoOkay is (notOkay and not okay) or okay;
-const integer: leadingZero is 0299792458;  # A leading zero digit does not introduce an octal integer.
+const boolean: alsoOkay is (notOkay and not okay) or okay; # testing
+
+(* Comments can span over multiple
+   lines as in this example. *)
+const integer: speedOfLight is 299792458;

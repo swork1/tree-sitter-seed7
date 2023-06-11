@@ -1,73 +1,38 @@
 module.exports = grammar({
   name: 'seed7',
+  extras: $ => [/\s/, $.line_comment, $.block_comment],
   rules: {
-    source_file: $ => repeat($._program),
-    _program: $ => choice(
-      $._white_space,
-      $._token,
-      $._expression,
+    source_file: $ => repeat($._statement),
+    _statement: $ => choice(
+      $.declaration,
     ),
-    _white_space: $ => choice(
-      $._space,
-      $._comment,
-    ),
-    _space: $ => choice(
-      ' ',
-      '\t',
-      '\r',
-      '\n'
-    ),
-    _token: $ => choice(
+    declaration: $ => seq(
+      'const',
       $.type,
-      $._identifier
-    ),
-    _identifier: $ => choice(
-      $.name_identifier,
-      $.special_character,
-    ),
-    _expression: $ => choice(
-        $._declaration,
+      ':',
+      $.name,
+      'is',
+      $.value,
+      ';'
     ),
     type: $ => choice(
       'boolean',
       'integer',
-      'float',
     ),
-    // $ syntax expr: .syntax.(). : .().is.(expr)     is  -> 40;
-    // $ syntax expr: .const.(). : .(expr).is.(expr)  is  -> 40;
-    // $ syntax expr: .const.(). : .(expr).is.forward is  -> 40;
-    // $ syntax expr: .var.(). : .(expr).is.(expr)    is  -> 40;
-    // $ syntax expr: .var.(). : .(expr).is.default   is  -> 40;
-    // $ syntax expr: .var.(). : .(expr).is.forward   is  -> 40;
-    // $ syntax expr: .include.()                     is  -> 40;
-    // $ syntax expr: .elem.(). : .(expr).is.(expr)   is  -> 40;
-    _declaration: $ => choice(
-      $.normal_declaration,
+    value: $ => choice(
+      $.boolean,
+      $.integer,
+      $._expression,
     ),
-    normal_declaration: $ => seq(
-      'const',
-      $.type,
-      ':',
-      $.name_identifier,
-      'is',
-      $.statement,
-    ),
-    // regex includes everything '.' except ';'
-    statement: $ => seq(
-      repeat(/[^;]/),
-      ';'
-    ),
-    function_declaration: $ => seq(
-      'todo'
-    ),
-    _comment: $ => choice(
-      $.line_comment,
-      $.block_comment
+    _expression: $ => choice(
+      $.binary_expression,  
+      $.unary_expression,
+      $.parenthesized_expression,
+      $.name,
     ),
     line_comment: $ => seq(
       '#',
-      repeat(/./),
-      '/n'
+      /.*/,
     ),
     block_comment: $ => seq(
       '(*',
@@ -76,42 +41,38 @@ module.exports = grammar({
       )),
       '*)'
     ),
-    name_identifier: $ => prec.right(seq(
-      choice(
-        $._letter,
-        $.underscore
-      ),
-      repeat(choice(
-        $._letter,
-        $.digit,
-        $.underscore
-      ))
+    binary_expression: $ => prec.left(1, seq(
+      field('left', $._expression),
+      field('operator', $.binary_operator),
+      field('right', $._expression),
     )),
-    _letter: $ => choice(
-      $._upper_case_letter,
-      $._lower_case_letter
+    unary_expression: $ => prec.left(1, seq(
+      field('operator', $.unary_operator),
+      field('argument', $._expression),
+    )),
+    parenthesized_expression: $ => seq(
+      '(',
+      $._expression,
+      ')',
     ),
-    _upper_case_letter: $ => choice(
-      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-      'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-      'U', 'V', 'W', 'X', 'Y', 'Z'
+    binary_operator: $ => choice(
+      '+',
+      '-',
+      '*',
+      '/',
+      'and',
+      'or',
     ),
-    _lower_case_letter: $ => choice(
-      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-      'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-      'u', 'v', 'w', 'x', 'y', 'z'
+    unary_operator: $ => choice(
+      'not',
     ),
-    digit: $ => choice(
-      '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+    boolean: $ => choice(
+      'TRUE',
+      'FALSE',
     ),
-    special_character: $ => choice(
-      '!', '$', '%', '&', '*', '+', ',', '-', '.', '/',
-      ':', ';', '<', '=', '>', '?', '@', '\\', '^', '`',
-      '|', '~'
-    ),
-    underscore: $ => choice(
-      '_'
-    ),
+    name: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    integer: $ => /\d+/,
+
   }
 })
 // Notes from syntax (seed7/lib/syntax.s7i) and grammar pages
