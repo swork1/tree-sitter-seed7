@@ -39,6 +39,26 @@
     }
   },
   {
+    "type": "bigInteger",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bigRational",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {
@@ -146,11 +166,20 @@
       "required": true,
       "types": [
         {
+          "type": "castFunction",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "castFunction",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "declaration",
@@ -196,6 +225,11 @@
     }
   },
   {
+    "type": "float",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "function_call",
     "named": true,
     "fields": {},
@@ -222,38 +256,27 @@
   {
     "type": "integer",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binaryLiteral",
-          "named": true
-        },
-        {
-          "type": "decimalLiteral",
-          "named": true
-        },
-        {
-          "type": "exponentialLiteral",
-          "named": true
-        },
-        {
-          "type": "hexLiteral",
-          "named": true
-        },
-        {
-          "type": "octalLiteral",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "line_comment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "cast",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "parenthesized_expression",
@@ -293,6 +316,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "rational",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -336,6 +364,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "type",
@@ -406,15 +439,39 @@
       "required": true,
       "types": [
         {
+          "type": "bigInteger",
+          "named": true
+        },
+        {
+          "type": "bigRational",
+          "named": true
+        },
+        {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "float",
           "named": true
         },
         {
           "type": "integer",
           "named": true
+        },
+        {
+          "type": "rational",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "#",
@@ -422,6 +479,10 @@
   },
   {
     "type": "$",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -457,6 +518,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -473,7 +538,19 @@
     "named": false
   },
   {
+    "type": "NIL",
+    "named": false
+  },
+  {
     "type": "TRUE",
+    "named": false
+  },
+  {
+    "type": "_",
+    "named": false
+  },
+  {
+    "type": "_/",
     "named": false
   },
   {
@@ -499,10 +576,6 @@
   {
     "type": "bin64",
     "named": false
-  },
-  {
-    "type": "binaryLiteral",
-    "named": true
   },
   {
     "type": "boolean",
@@ -533,16 +606,12 @@
     "named": false
   },
   {
-    "type": "decimalLiteral",
-    "named": true
+    "type": "div",
+    "named": false
   },
   {
     "type": "duration",
     "named": false
-  },
-  {
-    "type": "exponentialLiteral",
-    "named": true
   },
   {
     "type": "expr",
@@ -569,10 +638,6 @@
     "named": false
   },
   {
-    "type": "hexLiteral",
-    "named": true
-  },
-  {
     "type": "include",
     "named": false
   },
@@ -585,8 +650,12 @@
     "named": false
   },
   {
-    "type": "name",
-    "named": true
+    "type": "mdiv",
+    "named": false
+  },
+  {
+    "type": "mod",
+    "named": false
   },
   {
     "type": "not",
@@ -597,11 +666,11 @@
     "named": false
   },
   {
-    "type": "octalLiteral",
-    "named": true
+    "type": "or",
+    "named": false
   },
   {
-    "type": "or",
+    "type": "ord",
     "named": false
   },
   {
@@ -634,6 +703,10 @@
   },
   {
     "type": "reference",
+    "named": false
+  },
+  {
+    "type": "rem",
     "named": false
   },
   {

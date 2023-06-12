@@ -20,7 +20,7 @@ module.exports = grammar({
       ':',
       $.name,
       'is',
-      choice($._expression, $.value),
+      choice($.value, $._expression),
       ';'
     ),
     function_call: $ => prec(1, seq(
@@ -38,7 +38,6 @@ module.exports = grammar({
     ),
     type: $ => choice(
       'boolean',
-      'integer',
       'integer',
       'bigInteger',
       'rational',
@@ -73,10 +72,16 @@ module.exports = grammar({
       'type',
       'object',
       'expr',
+      'NIL',
     ),
     value: $ => choice(
       $.boolean,
       $.integer,
+      $.string,
+      $.float,
+      $.bigRational,
+      $.rational,
+      $.bigInteger,
     ),
     _expression: $ => prec.right(1, seq(
       choice(
@@ -121,6 +126,10 @@ module.exports = grammar({
       'and',
       'or',
       'parse',
+      'rem',
+      'div',
+      'mdiv',
+      'mod',
     ),
     unary_operator: $ => choice(
       'not',
@@ -129,23 +138,54 @@ module.exports = grammar({
       'TRUE',
       'FALSE',
     ),
-    name: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    name: $ => prec.right(1, seq(/[a-zA-Z_][a-zA-Z0-9_]*/,optional($.cast))),
     integer: $ => choice(
-      $.decimalLiteral,
-      $.exponentialLiteral,
-      $.hexLiteral,
-      $.octalLiteral,
-      $.binaryLiteral
+      $._decimalLiteral,
+      $._exponentialLiteral,
+      $._hexLiteral,
+      $._octalLiteral,
+      $._binaryLiteral
     ),
     cast: $ => seq(
       '+',
-      $.type,
+      choice($.type, $.castFunction),
     ),
-    decimalLiteral: $ => /[0-9]+/,
-    exponentialLiteral: $ => /[0-9]+[eE][+-]?[0-9]+/,
-    hexLiteral: $ => /16#[0-9A-Fa-f]+/,
-    octalLiteral: $ => /8#[0-7]+/,
-    binaryLiteral: $ => /2#[01]+/
+    castFunction: $ => seq(
+      'ord',
+    ),
+    _decimalLiteral: $ => /[0-9]+/,
+    _exponentialLiteral: $ => /[0-9]+[eE][+]?[0-9]+/,
+    _negativeExponentialLiteral: $ => /[0-9]+[eE][-]?[0-9]+/,
+    _hexLiteral: $ => /16#[0-9A-Fa-f]+/,
+    _octalLiteral: $ => /8#[0-7]+/,
+    _binaryLiteral: $ => /2#[01]+/,
+    string: $ => seq(
+      choice('"', "'"),
+      repeat(choice(
+        /./
+      )),
+      choice('"', "'"),
+    ),
+    float: $ => seq(
+      choice($._decimalLiteral, $._exponentialLiteral, $._negativeExponentialLiteral),
+      '.',
+      choice($._decimalLiteral, $._exponentialLiteral, $._negativeExponentialLiteral),
+    ),
+    bigRational: $ => seq(
+      choice($._decimalLiteral),
+      '_/',
+      choice($._decimalLiteral),
+      '_',
+    ),
+    rational: $ => prec(1,seq(
+      choice($._decimalLiteral),
+      '/',
+      choice($._decimalLiteral),
+    )),
+    bigInteger: $ => seq(
+      $.integer,
+      '_',
+    )
   }
 })
 // Notes from syntax (seed7/lib/syntax.s7i) and grammar pages
