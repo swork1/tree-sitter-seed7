@@ -4,7 +4,15 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($._statement),
     _statement: $ => choice(
+      $.include_statement,
       $.declaration,
+      $._expression,
+    ),
+    include_statement: $ => seq(
+      optional('$'),
+      'include',
+      /.*/, 
+      ';'
     ),
     declaration: $ => seq(
       'const',
@@ -12,24 +20,74 @@ module.exports = grammar({
       ':',
       $.name,
       'is',
-      $.value,
+      choice($._expression, $.value),
       ';'
+    ),
+    function_call: $ => prec(1, seq(
+      $.name,
+      '(',
+      $.argument_list,
+      ')',
+    )),
+    argument_list: $ => seq(
+      choice($._expression, $.value),
+      repeat(seq(
+        ',',
+        choice($._expression, $.value),
+      ))
     ),
     type: $ => choice(
       'boolean',
       'integer',
+      'integer',
+      'bigInteger',
+      'rational',
+      'bigRational',
+      'float',
+      'complex',
+      'char',
+      'string',
+      'array',
+      'hash',
+      'set',
+      'struct',
+      'bin64',
+      'bin32',
+      'bstring',
+      'color',
+      'time',
+      'duration',
+      'file',
+      'text',
+      'fileSys',
+      'process',
+      'category',
+      'reference',
+      'ref_list',
+      'program',
+      'ptr',
+      'func',
+      'varfunc',
+      'void',
+      'proc',
+      'type',
+      'object',
+      'expr',
     ),
     value: $ => choice(
       $.boolean,
       $.integer,
-      $._expression,
     ),
-    _expression: $ => choice(
-      $.binary_expression,  
-      $.unary_expression,
-      $.parenthesized_expression,
-      $.name,
-    ),
+    _expression: $ => prec.right(1, seq(
+      choice(
+        $.binary_expression,  
+        $.unary_expression,
+        $.parenthesized_expression,
+        $.name,
+        $.function_call,
+      ),
+      optional($.cast),
+    )),
     line_comment: $ => seq(
       '#',
       /.*/,
@@ -42,19 +100,19 @@ module.exports = grammar({
       '*)'
     ),
     binary_expression: $ => prec.left(1, seq(
-      field('left', $._expression),
+      field('left', choice($._expression, $.value)),
       field('operator', $.binary_operator),
-      field('right', $._expression),
+      field('right', choice($._expression, $.value)),
     )),
     unary_expression: $ => prec.left(1, seq(
       field('operator', $.unary_operator),
-      field('argument', $._expression),
+      field('argument', choice($._expression, $.value)),
     )),
-    parenthesized_expression: $ => seq(
+    parenthesized_expression: $ => prec.left(1, seq(
       '(',
-      $._expression,
+      choice($._expression, $.value),
       ')',
-    ),
+    )),
     binary_operator: $ => choice(
       '+',
       '-',
@@ -62,6 +120,7 @@ module.exports = grammar({
       '/',
       'and',
       'or',
+      'parse',
     ),
     unary_operator: $ => choice(
       'not',
@@ -71,8 +130,22 @@ module.exports = grammar({
       'FALSE',
     ),
     name: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    integer: $ => /\d+/,
-
+    integer: $ => choice(
+      $.decimalLiteral,
+      $.exponentialLiteral,
+      $.hexLiteral,
+      $.octalLiteral,
+      $.binaryLiteral
+    ),
+    cast: $ => seq(
+      '+',
+      $.type,
+    ),
+    decimalLiteral: $ => /[0-9]+/,
+    exponentialLiteral: $ => /[0-9]+[eE][+-]?[0-9]+/,
+    hexLiteral: $ => /16#[0-9A-Fa-f]+/,
+    octalLiteral: $ => /8#[0-7]+/,
+    binaryLiteral: $ => /2#[01]+/
   }
 })
 // Notes from syntax (seed7/lib/syntax.s7i) and grammar pages
