@@ -1,57 +1,23 @@
-const proc: main is func
+const func boolean: runOrChain (in string: cmd, in string: name) is func
+  result
+    var boolean: successful is FALSE;
   local
-    var integer: number is 0;
-    var float: aFloat is 28.0;
-    var bin64: aBin64 is bin64(65521);
-    var myHash: aHash is myHash.value;
-    var boolean: doProceed is TRUE;
-    var integer: count is 0;
-    var integer: index is 0;
+    var file: infile is STD_NULL;
   begin
-    writeln(speedOfLight lpad 10);
-    writeln(speedOfLight lpad0 10);
-    writeln(hexInteger radix 16);
-    writeln(archimedesConstant digits 10);
-    writeln(gravitationalConstant sci 4 exp 2);
-    writeln("*" mult 50);
-    number:=5;
-    number+:=3;
-    number-:=2;
-    number*:=4;
-    number<<:=1;
-    number>>:=2;
-    aFloat/:=4.0;
-    aBin64><:=bin64(997);
-    aBin64|:=bin64(127);
-    aBin64&:=bin64(67891);
-    aHash@:=["x"]1.1;
-    while doProceed do
-      repeat
-        incr(count);
-        if count = 1 then
-          for number range 1 to 10 do
-            writeln(number rpad 3 <& "...");
-          end for;
-        elsif count in {2} then
-          for number range 10 downto 1 do
-            writeln(number lpad 1+1);
-          end for;
-        else
-          for number key index range emptyArray do
-            noop;
-          end for;
-          doProceed := FALSE;
-        end if;
-        block
-          case count of
-            when {1}:  count := 1 div pred(count);
-            when {2}:  writeln("two");
-            otherwise: writeln("otherwise");
-          end case;
-        exception
-          catch NUMERIC_ERROR:
-            writeln("numeric error");
-        end block;
-      until not doProceed;
-    end while;
+    if infile <> STD_NULL then
+      line_marker;
+      writeln(log, cmd <& " " <& literal(name));
+      prg := 0 times lineType.value;
+      label := label_hash.EMPTY_HASH;
+      subprogram := label_hash.EMPTY_HASH;
+      subfunction := label_hash.EMPTY_HASH;
+      sub_declared := label_hash.EMPTY_HASH;
+      usedLabel := stringSet.value;
+      usedAsStatement := stringSet.value;
+      multipleDefinedLabel := multipleDefinedType.value;
+      loadProg(name, infile);
+      prepareLoops;
+      close(infile);
+      successful := TRUE;
+    end if;
   end func;

@@ -98,6 +98,10 @@
         "required": true,
         "types": [
           {
+            "type": ";",
+            "named": false
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -158,6 +162,10 @@
         "required": true,
         "types": [
           {
+            "type": ";",
+            "named": false
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -209,6 +217,112 @@
     "type": "binary_operator",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block_block",
+          "named": true
+        },
+        {
+          "type": "func_block",
+          "named": true
+        },
+        {
+          "type": "if_block",
+          "named": true
+        },
+        {
+          "type": "proc_block",
+          "named": true
+        },
+        {
+          "type": "repeat_block",
+          "named": true
+        },
+        {
+          "type": "while_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "exception_block",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "block_comment",
@@ -323,6 +437,73 @@
     }
   },
   {
+    "type": "else_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "enum_expression",
     "named": true,
     "fields": {},
@@ -353,9 +534,230 @@
     }
   },
   {
+    "type": "esif_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "exception_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "float",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "func_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "local_block",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "result_block",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "func_declaration",
@@ -423,9 +825,98 @@
     }
   },
   {
+    "type": "if_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "else_block",
+          "named": true
+        },
+        {
+          "type": "esif_block",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "include_statement",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "integer",
@@ -436,6 +927,21 @@
     "type": "line_comment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "local_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "declaration",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "name",
@@ -550,9 +1056,170 @@
     }
   },
   {
+    "type": "proc_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "local_block",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "result_block",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "rational",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "repeat_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "result_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "declaration",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "return_statement",
@@ -681,6 +1348,10 @@
           "named": true
         },
         {
+          "type": "block",
+          "named": true
+        },
+        {
           "type": "cast",
           "named": true
         },
@@ -783,6 +1454,10 @@
         "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -925,6 +1600,77 @@
     }
   },
   {
+    "type": "while_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -934,6 +1680,10 @@
   },
   {
     "type": "$",
+    "named": false
+  },
+  {
+    "type": "&:=",
     "named": false
   },
   {
@@ -965,7 +1715,15 @@
     "named": false
   },
   {
+    "type": "*:=",
+    "named": false
+  },
+  {
     "type": "+",
+    "named": false
+  },
+  {
+    "type": "+:=",
     "named": false
   },
   {
@@ -974,6 +1732,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "-:=",
     "named": false
   },
   {
@@ -989,11 +1751,43 @@
     "named": false
   },
   {
+    "type": "/:=",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
   {
+    "type": ":=",
+    "named": false
+  },
+  {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "<&",
+    "named": false
+  },
+  {
+    "type": "<<:=",
+    "named": false
+  },
+  {
+    "type": "<>",
+    "named": false
+  },
+  {
+    "type": "><:=",
+    "named": false
+  },
+  {
+    "type": ">>:=",
+    "named": false
+  },
+  {
+    "type": "@:=",
     "named": false
   },
   {
@@ -1045,6 +1839,10 @@
     "named": false
   },
   {
+    "type": "begin",
+    "named": false
+  },
+  {
     "type": "bigInteger",
     "named": false
   },
@@ -1065,11 +1863,19 @@
     "named": false
   },
   {
+    "type": "block",
+    "named": false
+  },
+  {
     "type": "boolean",
     "named": false
   },
   {
     "type": "bstring",
+    "named": false
+  },
+  {
+    "type": "catch",
     "named": false
   },
   {
@@ -1093,7 +1899,15 @@
     "named": false
   },
   {
+    "type": "digits",
+    "named": false
+  },
+  {
     "type": "div",
+    "named": false
+  },
+  {
+    "type": "do",
     "named": false
   },
   {
@@ -1101,15 +1915,47 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "elsif",
+    "named": false
+  },
+  {
     "type": "empty",
     "named": true
+  },
+  {
+    "type": "end block",
+    "named": false
   },
   {
     "type": "end enum",
     "named": false
   },
   {
+    "type": "end func",
+    "named": false
+  },
+  {
+    "type": "end if",
+    "named": false
+  },
+  {
     "type": "end struct",
+    "named": false
+  },
+  {
+    "type": "end while",
+    "named": false
+  },
+  {
+    "type": "exception",
+    "named": false
+  },
+  {
+    "type": "exp",
     "named": false
   },
   {
@@ -1141,6 +1987,10 @@
     "named": false
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "in",
     "named": false
   },
@@ -1165,11 +2015,27 @@
     "named": false
   },
   {
+    "type": "local",
+    "named": false
+  },
+  {
+    "type": "lpad",
+    "named": false
+  },
+  {
+    "type": "lpad0",
+    "named": false
+  },
+  {
     "type": "mdiv",
     "named": false
   },
   {
     "type": "mod",
+    "named": false
+  },
+  {
+    "type": "mult",
     "named": false
   },
   {
@@ -1217,6 +2083,10 @@
     "named": false
   },
   {
+    "type": "radix",
+    "named": false
+  },
+  {
     "type": "rational",
     "named": false
   },
@@ -1237,7 +2107,19 @@
     "named": false
   },
   {
+    "type": "repeat",
+    "named": false
+  },
+  {
+    "type": "result",
+    "named": false
+  },
+  {
     "type": "return",
+    "named": false
+  },
+  {
+    "type": "sci",
     "named": false
   },
   {
@@ -1265,6 +2147,10 @@
     "named": false
   },
   {
+    "type": "then",
+    "named": false
+  },
+  {
     "type": "time",
     "named": false
   },
@@ -1274,6 +2160,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "until",
     "named": false
   },
   {
@@ -1297,7 +2187,15 @@
     "named": false
   },
   {
+    "type": "while",
+    "named": false
+  },
+  {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|:=",
     "named": false
   },
   {

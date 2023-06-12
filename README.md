@@ -3,7 +3,7 @@
 
 ## Current theme (WIP)
 ```
-  "theme": {
+"theme": {
     "comment": {
       "color": "#9fa0b5",
       "italic": true
@@ -23,5 +23,20 @@
     },
     "cast": {
       "color": "#f5851d"
+    },
+    "boolean": {
+      "color": "#f23490"
+    },
+    "number": {
+      "color": "#d12234"
+    },
+    "string": {
+      "color": "#bf1f53"
+    },
+    "char": {
+      "color": "#cfe111"
+    },
+    "bold_value": {
+      "color": "#ff1223"
     }
   }
