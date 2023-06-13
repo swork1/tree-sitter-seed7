@@ -264,7 +264,11 @@
         },
         {
           "type": "STRING",
-          "value": "end case"
+          "value": "end"
+        },
+        {
+          "type": "STRING",
+          "value": "case"
         },
         {
           "type": "STRING",
@@ -561,7 +565,11 @@
           },
           {
             "type": "STRING",
-            "value": "end func"
+            "value": "end"
+          },
+          {
+            "type": "STRING",
+            "value": "func"
           },
           {
             "type": "STRING",
@@ -635,7 +643,11 @@
         },
         {
           "type": "STRING",
-          "value": "end while"
+          "value": "end"
+        },
+        {
+          "type": "STRING",
+          "value": "while"
         },
         {
           "type": "STRING",
@@ -695,7 +707,11 @@
         },
         {
           "type": "STRING",
-          "value": "end if"
+          "value": "end"
+        },
+        {
+          "type": "STRING",
+          "value": "if"
         },
         {
           "type": "STRING",
@@ -814,7 +830,11 @@
         },
         {
           "type": "STRING",
-          "value": "end block"
+          "value": "end"
+        },
+        {
+          "type": "STRING",
+          "value": "block"
         },
         {
           "type": "STRING",
@@ -1168,7 +1188,11 @@
               "members": [
                 {
                   "type": "STRING",
-                  "value": "set of"
+                  "value": "set"
+                },
+                {
+                  "type": "STRING",
+                  "value": "of"
                 },
                 {
                   "type": "SYMBOL",
@@ -1493,6 +1517,10 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "SYMBOL",
+                "name": "block_comment"
+              },
+              {
                 "type": "PATTERN",
                 "value": "."
               }
@@ -1718,7 +1746,11 @@
           "members": [
             {
               "type": "STRING",
-              "value": "set of"
+              "value": "set"
+            },
+            {
+              "type": "STRING",
+              "value": "of"
             },
             {
               "type": "SYMBOL",
@@ -1758,7 +1790,11 @@
       "members": [
         {
           "type": "STRING",
-          "value": "new enum"
+          "value": "new"
+        },
+        {
+          "type": "STRING",
+          "value": "enum"
         },
         {
           "type": "SYMBOL",
@@ -1782,7 +1818,11 @@
         },
         {
           "type": "STRING",
-          "value": "end enum"
+          "value": "end"
+        },
+        {
+          "type": "STRING",
+          "value": "enum"
         }
       ]
     },
@@ -1955,8 +1995,29 @@
           "value": "&:="
         },
         {
-          "type": "STRING",
-          "value": "@:="
+          "type": "FIELD",
+          "name": "d",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "@:="
+              },
+              {
+                "type": "STRING",
+                "value": "["
+              },
+              {
+                "type": "SYMBOL",
+                "name": "value"
+              },
+              {
+                "type": "STRING",
+                "value": "]"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",
@@ -2148,13 +2209,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\""
-            }
-          ]
+          "type": "STRING",
+          "value": "\""
         },
         {
           "type": "REPEAT",
@@ -2164,20 +2220,65 @@
               {
                 "type": "PATTERN",
                 "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
               }
             ]
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\""
-            }
-          ]
+          "type": "STRING",
+          "value": "\""
         }
       ]
+    },
+    "escape_sequence": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "\\"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "value"
+              },
+              {
+                "type": "STRING",
+                "value": "'"
+              },
+              {
+                "type": "STRING",
+                "value": "\""
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ";"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "float": {
       "type": "SEQ",
@@ -2323,52 +2424,6 @@
           {
             "type": "STRING",
             "value": "'"
-          }
-        ]
-      }
-    },
-    "escape_sequence": {
-      "type": "PREC_LEFT",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "\\"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "."
-              },
-              {
-                "type": "SYMBOL",
-                "name": "value"
-              },
-              {
-                "type": "STRING",
-                "value": "'"
-              },
-              {
-                "type": "STRING",
-                "value": "\""
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ";"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
           }
         ]
       }

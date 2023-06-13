@@ -255,7 +255,30 @@
   {
     "type": "binary_operator",
     "named": true,
-    "fields": {}
+    "fields": {
+      "d": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "@:=",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "value",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "block",
@@ -386,7 +409,17 @@
   {
     "type": "block_comment",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "block_comment",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "boolean",
@@ -1782,7 +1815,17 @@
   {
     "type": "string",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "struct_expression",
@@ -1826,7 +1869,11 @@
         "required": false,
         "types": [
           {
-            "type": "set of",
+            "type": "of",
+            "named": false
+          },
+          {
+            "type": "set",
             "named": false
           },
           {
@@ -2350,15 +2397,7 @@
     "named": true
   },
   {
-    "type": "end block",
-    "named": false
-  },
-  {
-    "type": "end case",
-    "named": false
-  },
-  {
-    "type": "end enum",
+    "type": "end",
     "named": false
   },
   {
@@ -2370,15 +2409,11 @@
     "named": false
   },
   {
-    "type": "end if",
-    "named": false
-  },
-  {
     "type": "end struct",
     "named": false
   },
   {
-    "type": "end while",
+    "type": "enum",
     "named": false
   },
   {
@@ -2482,10 +2517,6 @@
     "named": false
   },
   {
-    "type": "new enum",
-    "named": false
-  },
-  {
     "type": "not",
     "named": false
   },
@@ -2578,7 +2609,7 @@
     "named": false
   },
   {
-    "type": "set of",
+    "type": "set",
     "named": false
   },
   {

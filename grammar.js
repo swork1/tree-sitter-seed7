@@ -57,7 +57,8 @@ module.exports = grammar({
       'of',
       repeat1($.case_statement),
       optional(seq('otherwise', ':', repeat1($._expression))),
-      'end case',
+      'end',
+      'case',
       ';'
     ),
     case_statement: $ => seq(
@@ -104,7 +105,8 @@ module.exports = grammar({
       optional($.local_block),
       'begin',
       repeat1($._statement),
-      'end func',
+      'end',
+      'func',
       ';'
     )),
     result_block: $ => seq(
@@ -120,7 +122,8 @@ module.exports = grammar({
       choice($._expression, $.value),
       'do',
       repeat($._statement),
-      'end while',
+      'end',
+      'while',
       ';'
     ),
     if_block: $ => seq(
@@ -130,7 +133,8 @@ module.exports = grammar({
       repeat($._statement),
       repeat($.esif_block),
       optional($.else_block),
-      'end if',
+      'end',
+      'if',
       ';'
     ),
     esif_block: $ => seq(
@@ -153,7 +157,8 @@ module.exports = grammar({
     block_block: $ => seq(
       'block',
       repeat(choice($._statement, $.exception_block)),
-      'end block',
+      'end',
+      'block',
       ';'
     ),
     exception_block: $ => seq(
@@ -206,7 +211,7 @@ module.exports = grammar({
     ),
     type: $ => choice(
       field('array', seq('array', $.type)),
-      field('set', prec.left(1, seq('set of', $.type))),
+      field('set', prec.left(1, seq('set', 'of', $.type))),
       'boolean',
       'integer',
       'bigInteger',
@@ -281,12 +286,11 @@ module.exports = grammar({
       '#',
       /.*/,
     ),
+    // (* Comments can (* nest *) as in this example. *)
     block_comment: $ => seq(
       '(*',
-      repeat(choice(
-        /./
-      )),
-      '*)'
+      repeat(choice($.block_comment, /./)),
+      '*)',
     ),
     binary_expression: $ => prec.left(1, seq(
       field('left', choice($._expression, $.value)),
@@ -320,7 +324,8 @@ module.exports = grammar({
         '}',
       ),
       seq(
-        'set of',
+        'set',
+        'of',
         $.type,
       ),
     ),
@@ -332,10 +337,12 @@ module.exports = grammar({
       $.type,
     ),
     enum_expression: $ => seq(
-      'new enum',
+      'new',
+      'enum',
       $.name,
       repeat(seq(',', $.name)),
-      'end enum',
+      'end',
+      'enum',
     ),
     struct_expression: $ => seq(
       choice('new', 'sub'),
@@ -375,7 +382,7 @@ module.exports = grammar({
       '/:=',
       '|:=',
       '&:=',
-      '@:=',
+      field('d', seq('@:=', '[', $.value, ']')),
       '><:=',
       '<&',
       '<>',
@@ -421,14 +428,17 @@ module.exports = grammar({
     _hexLiteral: $ => /16#[0-9A-Fa-f]+/,
     _octalLiteral: $ => /8#[0-7]+/,
     _binaryLiteral: $ => /2#[01]+/,
-    // TODO FIX THIS STRING
     string: $ => seq(
-      choice('"'),
+      '"',
       repeat(choice(
         /./,
+        $.escape_sequence,
       )),
-      choice('"'),
+      '"',
     ),
+    escape_sequence: $ => token.immediate(seq(
+      '\\',
+    )),
     float: $ => seq(
       choice($._decimalLiteral, $._exponentialLiteral, $._negativeExponentialLiteral),
       '.',
