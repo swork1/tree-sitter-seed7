@@ -1,33 +1,11 @@
-var integer: welcomeLayout is [](
-
- []("   X     X     X     X   X   ",
-    "                             ",
-    "   X X X X   X   X   X   X   ",
-    "                       X     ",
-    "               X             ",
-    "   X     X   X   X   X   X   ",
-    "                             ",
-    "                             ",
-    "                             ",
-    "    X    X X    X   X    X   ",
-    "                             ",
-    "    X   X   X   X       X    ",
-    "X                 X X        ",
-    "        X   X           X   X",
-    " X X      X     X   X     X  "),
-
- []("                             ",
-    "    X   X     X X    X   X   ",
-    "                             ",
-    "      X                X     ",
-    "   X     X   X   X   X   X   ",
-    "                             ",
-    "                             ",
-    "                             ",
-    "                             ",
-    "   X      X               X  ",
-    "        X   X           X    ",
-    "    X            X  X        ",
-    "        X   X           X   X",
-    "X   X           X  X         ",
-    "  X      X X             X X "));
+    block
+      statement := prepare(currDb, command);
+      execute(statement);
+    exception
+      catch DATABASE_ERROR:
+        displayMessage(browser, "Database error", command, errMessage(DATABASE_ERROR));
+        failed := TRUE;
+      otherwise:
+        displayMessage(browser, "Error", "Error occurred");
+        failed := TRUE;
+    end block;

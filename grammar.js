@@ -1,6 +1,6 @@
 module.exports = grammar({
   name: 'seed7',
-  extras: $ => [/\s/],
+  extras: $ => [/\s/, ';', $.comment],
   conflicts: $ => [
     [$.hash_expression, $.type],
   ],
@@ -12,14 +12,11 @@ module.exports = grammar({
       $.declaration,
       $.func_declaration,
       $._expression,
-      $.line_comment,
-      $.block_comment,
     ),
     include_statement: $ => seq(
       optional('$'),
       'include',
       $.string,
-      ';'
     ),
     declaration: $ => seq(
       choice('const', 'var'),
@@ -27,8 +24,7 @@ module.exports = grammar({
       ':',
       $.name,
       'is',
-      choice($.value, $._expression, $.enum_expression),
-      ';'
+      choice($.type, $.value, $._expression, $.enum_expression),
     ),
     func_declaration: $ => seq(
       'const',
@@ -39,7 +35,6 @@ module.exports = grammar({
       $.parameter_list,
       'is',
       $.return_statement,
-      ';'
     ),
     block: $ => choice(
       $.proc_block,
@@ -56,16 +51,20 @@ module.exports = grammar({
       choice($._expression, $.value),
       'of',
       repeat1($.case_statement),
-      optional(seq('otherwise', ':', repeat1($._expression))),
+      optional($.otherwise_block),
       'end',
       'case',
-      ';'
+    ),
+    otherwise_block: $ => seq(
+      'otherwise',
+      ':',
+      prec.left(1, repeat1($._expression)),
     ),
     case_statement: $ => seq(
       'when',
       $.set_expression,
       ':',
-      repeat1($._expression),
+      repeat1($._statement),
     ),
     func_block: $ => prec.left(1, seq(
       'const',
@@ -80,25 +79,36 @@ module.exports = grammar({
       optional($.local_block),
       'begin',
       repeat1($._statement),
-      'end func',
-      ';'
+      'end',
+      'func',
     )),
     for_block: $ => seq(
       'for',
-      choice($._expression, $.value),
-      optional(seq('key', $.name)),
-      'range',
-      choice($._expression, $.value, seq(choice($._expression, $.value), 'downto', choice($._expression, $.value))),
+      choice($._expression, $.value, seq('key', $.name)),
+      field('range', optional(
+        seq(
+          'range', 
+          choice($._expression, $.value,
+            seq(
+              choice($._expression, $.value), 
+              'downto', 
+              choice($._expression, $.value)
+            )
+          )
+        )
+      )),
+      optional(seq('until', field('until_expr', choice($._expression, $.value)))),
       'do',
       repeat($._statement),
-      'end for',
-      ';',
+      'end',
+      'for',
     ),
     proc_block: $ => prec.left(1, seq(
       'const',
       'proc',
       ':',
       $.name,
+      optional($.parameter_list),
       'is',
       'func',
       optional($.result_block),
@@ -107,7 +117,6 @@ module.exports = grammar({
       repeat1($._statement),
       'end',
       'func',
-      ';'
     )),
     result_block: $ => seq(
       'result',
@@ -124,7 +133,6 @@ module.exports = grammar({
       repeat($._statement),
       'end',
       'while',
-      ';'
     ),
     if_block: $ => seq(
       'if',
@@ -135,7 +143,6 @@ module.exports = grammar({
       optional($.else_block),
       'end',
       'if',
-      ';'
     ),
     esif_block: $ => seq(
       'elsif',
@@ -151,19 +158,18 @@ module.exports = grammar({
       'repeat',
       repeat($._statement),
       'until',
-      choice($._expression, $.value),
-      ';'
+      field('until_expr', choice($._expression, $.value)),
     ),
     block_block: $ => seq(
       'block',
       repeat(choice($._statement, $.exception_block)),
       'end',
       'block',
-      ';'
     ),
     exception_block: $ => seq(
       'exception',
-      prec.left(1, repeat1(seq('catch', $.name, ':', prec.left(1, repeat1($._statement))))),
+      repeat1(seq('catch', $.name, ':', $._expression)),
+      optional($.otherwise_block),
     ),
     return_statement: $ => seq(
       optional('return'),
@@ -195,17 +201,17 @@ module.exports = grammar({
       ')',
     )),
     array_call: $ => prec(1, seq(
-      choice($.name, $.type),
+      choice($._expression, $.type),
       '[',
       $.argument_list,
       ']',
     )),
     argument_list: $ => seq(
       optional($.dotdot),
-      choice($._expression, $.value),
+      choice($._expression, $.value, $.type),
       repeat(seq(
         ',',
-        choice($._expression, $.value),
+        choice($._expression, $.value, $.type),
       )),
       optional($.dotdot),
     ),
@@ -246,7 +252,9 @@ module.exports = grammar({
       'object',
       'expr',
       'bitset',
+      $.unknown_type,
     ),
+    unknown_type: $ => prec.right(2, $.name),
     value: $ => choice(
       $.boolean,
       $.integer,
@@ -260,7 +268,6 @@ module.exports = grammar({
       $.empty,
       $.STD_NULL,
       $.forward,
-      // TODO array value
       $.array
     ),
     dotdot: $ => '..',
@@ -278,21 +285,37 @@ module.exports = grammar({
         $.array_call
       ),
       optional($.cast),
-      optional(';')
     )),
     NIL: $ => 'NIL',
     empty: $ => 'empty',
     STD_NULL: $ => 'STD_NULL',
     forward: $ => 'forward',
-    line_comment: $ => seq(
-      '#',
-      /.*/,
-    ),
-    // (* Comments can (* nest *) as in this example. *)
-    block_comment: $ => seq(
-      '(*',
-      repeat(choice($.block_comment, /./)),
-      '*)',
+    comment: $ => token(choice(
+      seq('#', /.*/),
+      seq(
+        '(*',
+        /[^*]*\*+([^/*][^*]*\*+)*/,
+        ')'
+      ),
+      // https://tc39.es/ecma262/#sec-html-like-comments
+      seq('<!--', /.*/),
+      // This allows code to exist before this token on the same line.
+      //
+      // Technically, --> is supposed to have nothing before it on the same line
+      // except for comments and whitespace, but that is difficult to express,
+      // and in general tree sitter grammars tend to prefer to be overly
+      // permissive anyway.
+      //
+      // This approach does not appear to cause problems in practice.
+      seq('-->', /.*/)
+    )),
+    array: $ => seq(
+      '[',
+      optional(field('index', $.value)),
+      ']',
+      '(',
+      optional(seq(choice($.value, $._expression), repeat(seq(',', choice($.value, $._expression))))),
+      ')',
     ),
     binary_expression: $ => prec.left(1, seq(
       field('left', choice($._expression, $.value)),
@@ -304,7 +327,7 @@ module.exports = grammar({
       field('argument', choice($._expression, $.value)),
     )),
     value_operator: $ => seq(
-      choice($.type, $.name),
+      choice($.type, $.name, $.array_call, $.function_call, $.parenthesized_expression),
       '.',
       $.name,
     ),
@@ -352,9 +375,11 @@ module.exports = grammar({
       'struct',
       $.declaration,
       repeat($.declaration),
-      'end struct',
+      'end',
+      'struct',
     ),
     binary_operator: $ => choice(
+      '<>',
       '+',
       '-',
       '*',
@@ -383,21 +408,32 @@ module.exports = grammar({
       '>>:=',
       '/:=',
       '|:=',
-      '&:=',
-      field('d', seq('@:=', '[', $.value, ']')),
+      field('a', seq('@:=', '[', optional(choice($.value, $.name, $._expression)), ']')),
+      field('b', seq('&:=', optional('[]'))),
       '><:=',
       '<&',
-      '<>',
       '=',
       '&',
       '..',
       'rpad',
       'to',
-      'in'
+      'step',
+      '<',
+      '>',
+      '<=',
+      '>=',
+      'in',
+      'not in',
+      '|',
+      'len',
+      'fixLen',
+      '>>',
+      '<<'
     ),
-    unary_operator: $ => choice(
+    unary_operator: $ => prec.left(1,choice(
       'not',
-    ),
+      '-'
+    )),
     boolean: $ => choice(
       'TRUE',
       'FALSE',
@@ -433,11 +469,19 @@ module.exports = grammar({
     string: $ => seq(
       '"',
       repeat(choice(
-        /./,
+        token.immediate(prec(1, /[^"\\]+/)),
         $.escape_sequence,
       )),
       '"',
     ),
+    char: $ => prec.left(1, seq(
+      "'",
+      repeat(choice(
+        token.immediate(prec(1, /[^']+/)),
+        $.escape_sequence,
+      )),      
+      "'",
+    )),
     escape_sequence: $ => token.immediate(seq(
       '\\',
     )),
@@ -461,17 +505,6 @@ module.exports = grammar({
       $.integer,
       '_',
     ),
-    // Examples of character literals are:
-
-    // 'a'   ' '   '\n'   '!'   '\\'   '2'   '"'   '\"'   '\''   '\8;'
-    char: $ => prec.left(1, seq(
-      "'",
-      choice(
-        /./,
-        $.escape_sequence,
-      ),
-      "'",
-    )),
     escape_sequence: $ => prec.left(1, seq(
       '\\',
       choice(
@@ -480,7 +513,6 @@ module.exports = grammar({
         "'",
         '"',
       ),
-      optional(';')
     )),
   }
 })

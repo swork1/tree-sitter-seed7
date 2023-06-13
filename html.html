@@ -20,357 +20,1225 @@
 <body>
 
 <table>
-<tr><td class=line-number>1</td><td class=line>
+<tr><td class=line-number>1</td><td class=line><span style='color: #752091'>const</span> <span style='color: #752091'>func</span> <span style='color: #32a852'>float</span>: exec_primary (inout <span style='color: #32a852'>string</span>: symbol, inout <span style='color: #32a852'>string</span>: line) <span style='color: #752091'>is</span> <span style='color: #752091'>func</span>
 </td></tr>
-<tr><td class=line-number>2</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(********************************************************************)</span>
+<tr><td class=line-number>2</td><td class=line>  result
 </td></tr>
-<tr><td class=line-number>3</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*                                                                  *)</span>
+<tr><td class=line-number>3</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>float</span>: exprResult <span style='color: #752091'>is</span> <span style='color: #d12234'>0.0</span>;
 </td></tr>
-<tr><td class=line-number>4</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  mahjong.sd7   Mahjong solitaire game                            *)</span>
+<tr><td class=line-number>4</td><td class=line>  <span style='color: #752091'>local</span>
 </td></tr>
-<tr><td class=line-number>5</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  Copyright (C) 2007  Thomas Mertes                               *)</span>
+<tr><td class=line-number>5</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>string</span>: variable_name <span style='color: #752091'>is</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
 </td></tr>
-<tr><td class=line-number>6</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*                                                                  *)</span>
+<tr><td class=line-number>6</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>string</span>: unused_name <span style='color: #752091'>is</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
 </td></tr>
-<tr><td class=line-number>7</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  This program is free software; you can redistribute it and/or   *)</span>
+<tr><td class=line-number>7</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>string</span>: stri1 <span style='color: #752091'>is</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
 </td></tr>
-<tr><td class=line-number>8</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  modify it under the terms of the GNU General Public License as  *)</span>
+<tr><td class=line-number>8</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>string</span>: stri2 <span style='color: #752091'>is</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
 </td></tr>
-<tr><td class=line-number>9</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  published by the Free Software Foundation; either version 2 of  *)</span>
+<tr><td class=line-number>9</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>float</span>: num1 <span style='color: #752091'>is</span> <span style='color: #d12234'>0.0</span>;
 </td></tr>
-<tr><td class=line-number>10</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  the License, or (at your option) any later version.             *)</span>
+<tr><td class=line-number>10</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: index1 <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
 </td></tr>
-<tr><td class=line-number>11</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*                                                                  *)</span>
+<tr><td class=line-number>11</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: index2 <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
 </td></tr>
-<tr><td class=line-number>12</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  This program is distributed in the hope that it will be useful, *)</span>
+<tr><td class=line-number>12</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>char</span>: current_key <span style='color: #752091'>is</span> <span style='color: #cfe111'>&#39; &#39;</span>;
 </td></tr>
-<tr><td class=line-number>13</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  but WITHOUT ANY WARRANTY; without even the implied warranty of  *)</span>
+<tr><td class=line-number>13</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>time</span>: time_now <span style='color: #752091'>is</span> <span style='color: #32a852'>time</span>.value;
 </td></tr>
-<tr><td class=line-number>14</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   *)</span>
+<tr><td class=line-number>14</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>duration</span>: since_midnight <span style='color: #752091'>is</span> <span style='color: #32a852'>duration</span>.value;
 </td></tr>
-<tr><td class=line-number>15</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  GNU General Public License for more details.                    *)</span>
+<tr><td class=line-number>15</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>string</span>: func_name <span style='color: #752091'>is</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
 </td></tr>
-<tr><td class=line-number>16</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*                                                                  *)</span>
+<tr><td class=line-number>16</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>file</span>: aFile <span style='color: #752091'>is</span> <span style='color: #ff1223'>STD_NULL</span>;
 </td></tr>
-<tr><td class=line-number>17</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  You should have received a copy of the GNU General Public       *)</span>
+<tr><td class=line-number>17</td><td class=line>  <span style='color: #752091'>begin</span>
 </td></tr>
-<tr><td class=line-number>18</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  License along with this program; if not, write to the           *)</span>
+<tr><td class=line-number>18</td><td class=line>    <span style='color: #752091'>case</span> symbol <span style='color: #752091'>of</span>
 </td></tr>
-<tr><td class=line-number>19</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  Free Software Foundation, Inc., 51 Franklin Street,             *)</span>
+<tr><td class=line-number>19</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>20</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*  Fifth Floor, Boston, MA  02110-1301, USA.                       *)</span>
+<tr><td class=line-number>20</td><td class=line>        error_marker;
 </td></tr>
-<tr><td class=line-number>21</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(*                                                                  *)</span>
+<tr><td class=line-number>21</td><td class=line>        <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;EXPRESSION EXPECTED - FOUND END OF LINE.&quot;</span>);
 </td></tr>
-<tr><td class=line-number>22</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(********************************************************************)</span>
+<tr><td class=line-number>22</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;ABS&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>23</td><td class=line>
+<tr><td class=line-number>23</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>24</td><td class=line>
+<tr><td class=line-number>24</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>25</td><td class=line><span style='color: #b3ac4f'>$ include <span style='color: #bf1f53'>&quot;seed7_05.s7i&quot;</span>;</span>
+<tr><td class=line-number>25</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>26</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;float.s7i&quot;</span>;</span>
+<tr><td class=line-number>26</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>27</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;draw.s7i&quot;</span>;</span>
+<tr><td class=line-number>27</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>abs</span>(num1);
 </td></tr>
-<tr><td class=line-number>28</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;keybd.s7i&quot;</span>;</span>
+<tr><td class=line-number>28</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;ABS(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>29</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;dialog.s7i&quot;</span>;</span>
+<tr><td class=line-number>29</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;ASC&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>30</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;time.s7i&quot;</span>;</span>
+<tr><td class=line-number>30</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>31</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;mahjng32.s7i&quot;</span>;</span>
+<tr><td class=line-number>31</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>32</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;duration.s7i&quot;</span>;</span>
+<tr><td class=line-number>32</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>33</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;text.s7i&quot;</span>;</span>
+<tr><td class=line-number>33</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>34</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;vecfont10.s7i&quot;</span>;</span>
+<tr><td class=line-number>34</td><td class=line>        if stri1 <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #bf1f53'>&quot;&quot;</span> then
 </td></tr>
-<tr><td class=line-number>35</td><td class=line>  <span style='color: #b3ac4f'>include <span style='color: #bf1f53'>&quot;pixmap_file.s7i&quot;</span>;</span>
+<tr><td class=line-number>35</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>1</span>]));
 </td></tr>
-<tr><td class=line-number>36</td><td class=line>
+<tr><td class=line-number>36</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;ASC(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>37</td><td class=line>
+<tr><td class=line-number>37</td><td class=line>        else
 </td></tr>
-<tr><td class=line-number>38</td><td class=line><span style='color: #752091'>var</span> <span style='color: #32a852'>text</span>: screen <span style='color: #752091'>is</span> <span style='color: #ff1223'>STD_NULL</span>;
+<tr><td class=line-number>38</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>39</td><td class=line>
+<tr><td class=line-number>39</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;ASC(\&quot;\&quot;) - ILLEGAL FUNCTION CALL&quot;</span>);
 </td></tr>
-<tr><td class=line-number>40</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: WINDOW_WIDTH <span style='color: #752091'>is</span> <span style='color: #d12234'>1016</span>;
+<tr><td class=line-number>40</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>41</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: WINDOW_HEIGHT <span style='color: #752091'>is</span> <span style='color: #d12234'>704</span>;
+<tr><td class=line-number>41</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;ATN&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>42</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: UPPER_BORDER <span style='color: #752091'>is</span> <span style='color: #d12234'>46</span>;
+<tr><td class=line-number>42</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>43</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: LEFT_BORDER <span style='color: #752091'>is</span> <span style='color: #d12234'>24</span>;
+<tr><td class=line-number>43</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>44</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: MENUE_BAR_HEIGHT <span style='color: #752091'>is</span> <span style='color: #d12234'>18</span>;
+<tr><td class=line-number>44</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>45</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: PIXMAP_WIDTH <span style='color: #752091'>is</span> <span style='color: #d12234'>48</span>;
+<tr><td class=line-number>45</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>46</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: PIXMAP_HEIGHT <span style='color: #752091'>is</span> <span style='color: #d12234'>64</span>;
+<tr><td class=line-number>46</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>atan</span>(num1);
 </td></tr>
-<tr><td class=line-number>47</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: TILE_BORDER <span style='color: #752091'>is</span> <span style='color: #d12234'>8</span>;
+<tr><td class=line-number>47</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;ATN(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>48</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: TILE_WIDTH <span style='color: #752091'>is</span> PIXMAP_WIDTH <span style='color: #ab492b'>+</span> <span style='color: #d12234'>2</span> <span style='color: #ab492b'>*</span> TILE_BORDER;
+<tr><td class=line-number>48</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CDBL&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>49</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: TILE_HEIGHT <span style='color: #752091'>is</span> PIXMAP_HEIGHT <span style='color: #ab492b'>+</span> <span style='color: #d12234'>2</span> <span style='color: #ab492b'>*</span> TILE_BORDER;
+<tr><td class=line-number>49</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>50</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: FIELD_X_STEP <span style='color: #752091'>is</span> TILE_WIDTH <span style='color: #ab492b'>div</span> <span style='color: #d12234'>2</span>;
+<tr><td class=line-number>50</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>51</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: FIELD_Y_STEP <span style='color: #752091'>is</span> TILE_HEIGHT <span style='color: #ab492b'>div</span> <span style='color: #d12234'>2</span>;
+<tr><td class=line-number>51</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>52</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: HALF_FIELD <span style='color: #752091'>is</span> FIELD_Y_STEP <span style='color: #ab492b'>div</span> <span style='color: #d12234'>2</span>;
+<tr><td class=line-number>52</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>53</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: FRAME_THICKNESS <span style='color: #752091'>is</span> <span style='color: #d12234'>5</span>;
+<tr><td class=line-number>53</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CDBL(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>54</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: MARK_THICKNESS <span style='color: #752091'>is</span> <span style='color: #d12234'>7</span>;
+<tr><td class=line-number>54</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CINT&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>55</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: FIELD_LINES <span style='color: #752091'>is</span> <span style='color: #d12234'>15</span>;
+<tr><td class=line-number>55</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>56</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: FIELD_COLUMNS <span style='color: #752091'>is</span> <span style='color: #d12234'>29</span>;
+<tr><td class=line-number>56</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>57</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: COMPUTER_HIT_XPOS <span style='color: #752091'>is</span> <span style='color: #d12234'>8</span>;
+<tr><td class=line-number>57</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>58</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: PLAYER_HIT_XPOS <span style='color: #752091'>is</span> UPPER_BORDER <span style='color: #ab492b'>+</span> FIELD_LINES <span style='color: #ab492b'>*</span> FIELD_X_STEP <span style='color: #ab492b'>+</span> FIELD_X_STEP <span style='color: #ab492b'>+</span> <span style='color: #d12234'>8</span>;
+<tr><td class=line-number>58</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>59</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: SHIFT_X <span style='color: #752091'>is</span> <span style='color: #d12234'>10</span>;
+<tr><td class=line-number>59</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>round</span>(num1));
 </td></tr>
-<tr><td class=line-number>60</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>integer</span>: SHIFT_Y <span style='color: #752091'>is</span> <span style='color: #d12234'>10</span>;
+<tr><td class=line-number>60</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CINT(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>61</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: BACKGROUND <span style='color: #752091'>is</span> light_blue;
+<tr><td class=line-number>61</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CLNG&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>62</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: leftSideColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>gray</span>(<span style='color: #d12234'>49152</span>); <span style='font-style: italic;color: #9fa0b5'># was: 57344</span>
+<tr><td class=line-number>62</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>63</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: nearSideColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>gray</span>(<span style='color: #d12234'>40960</span>); <span style='font-style: italic;color: #9fa0b5'># was: 49152</span>
+<tr><td class=line-number>63</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>64</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: leftEdgeColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>gray</span>(<span style='color: #d12234'>32768</span>); <span style='font-style: italic;color: #9fa0b5'># was: 40960</span>
+<tr><td class=line-number>64</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>65</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: nearEdgeColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>gray</span>(<span style='color: #d12234'>24576</span>); <span style='font-style: italic;color: #9fa0b5'># was: 32768</span>
+<tr><td class=line-number>65</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>66</td><td class=line>
+<tr><td class=line-number>66</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>round</span>(num1));
 </td></tr>
-<tr><td class=line-number>67</td><td class=line>
+<tr><td class=line-number>67</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CLNG(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>68</td><td class=line><span style='font-style: italic;color: #9fa0b5'>(**</span>
+<tr><td class=line-number>68</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;COS&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>69</td><td class=line><span style='font-style: italic;color: #9fa0b5'> *  Return an array of colors between &#39;first&#39; and &#39;second&#39;.</span>
+<tr><td class=line-number>69</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>70</td><td class=line><span style='font-style: italic;color: #9fa0b5'> *  The returned array has the specified &#39;length&#39;. The colors &#39;first&#39;</span>
+<tr><td class=line-number>70</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>71</td><td class=line><span style='font-style: italic;color: #9fa0b5'> *  and &#39;second&#39; are not part of the array.</span>
+<tr><td class=line-number>71</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>72</td><td class=line><span style='font-style: italic;color: #9fa0b5'> *)</span>
+<tr><td class=line-number>72</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>73</td><td class=line><span style='color: #752091'>const</span> <span style='color: #752091'>func</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: colorScale (in <span style='color: #32a852'>color</span>: first, in <span style='color: #32a852'>color</span>: second,
+<tr><td class=line-number>73</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>cos</span>(num1);
 </td></tr>
-<tr><td class=line-number>74</td><td class=line>    in <span style='color: #32a852'>integer</span>: length) <span style='color: #752091'>is</span> <span style='color: #752091'>func</span>
+<tr><td class=line-number>74</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;COS(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>75</td><td class=line>  result
+<tr><td class=line-number>75</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CSNG&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>76</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: colorScale <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> <span style='color: #32a852'>color</span>.value;
+<tr><td class=line-number>76</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>77</td><td class=line>  <span style='color: #752091'>local</span>
+<tr><td class=line-number>77</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>78</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: red_delta <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>78</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
 </td></tr>
-<tr><td class=line-number>79</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: green_delta <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>79</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>80</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: blue_delta <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>80</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CSNG(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>81</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: number <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>81</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CSRLIN&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>82</td><td class=line>  <span style='color: #752091'>begin</span>
+<tr><td class=line-number>82</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>83</td><td class=line>    colorScale <span style='color: #ab492b'>:=</span> length <span style='color: #ab492b'>times</span> <span style='color: #32a852'>color</span>.value;
+<tr><td class=line-number>83</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>line</span>(win));
 </td></tr>
-<tr><td class=line-number>84</td><td class=line>    red_delta   <span style='color: #ab492b'>:=</span> (second.redLight   <span style='color: #ab492b'>-</span> first.redLight)   <span style='color: #ab492b'>div</span> <span style='color: #3237c9'>succ</span>(length);
+<tr><td class=line-number>84</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CSRLIN -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>85</td><td class=line>    green_delta <span style='color: #ab492b'>:=</span> (second.greenLight <span style='color: #ab492b'>-</span> first.greenLight) <span style='color: #ab492b'>div</span> <span style='color: #3237c9'>succ</span>(length);
+<tr><td class=line-number>85</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CVD&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>86</td><td class=line>    blue_delta  <span style='color: #ab492b'>:=</span> (second.blueLight  <span style='color: #ab492b'>-</span> first.blueLight)  <span style='color: #ab492b'>div</span> <span style='color: #3237c9'>succ</span>(length);
+<tr><td class=line-number>86</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>87</td><td class=line>    <span style='color: #752091'>for</span> number <span style='color: #752091'>range</span> <span style='color: #d12234'>1</span> <span style='color: #ab492b'>to</span> length <span style='color: #752091'>do</span>
+<tr><td class=line-number>87</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>88</td><td class=line>      colorScale[number]<span style='color: #32a852'></span><span style='color: #752091'></span>.redLight   <span style='color: #ab492b'>:=</span> first.redLight   <span style='color: #ab492b'>+</span> number <span style='color: #ab492b'>*</span> red_delta;
+<tr><td class=line-number>88</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>89</td><td class=line>      colorScale[number]<span style='color: #32a852'></span><span style='color: #752091'></span>.greenLight <span style='color: #ab492b'>:=</span> first.greenLight <span style='color: #ab492b'>+</span> number <span style='color: #ab492b'>*</span> green_delta;
+<tr><td class=line-number>89</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>90</td><td class=line>      colorScale[number]<span style='color: #32a852'></span><span style='color: #752091'></span>.blueLight  <span style='color: #ab492b'>:=</span> first.blueLight  <span style='color: #ab492b'>+</span> number <span style='color: #ab492b'>*</span> blue_delta;
+<tr><td class=line-number>90</td><td class=line>        if <span style='color: #3237c9'>length</span>(stri1) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>8</span> then
 </td></tr>
-<tr><td class=line-number>91</td><td class=line>    end for;
+<tr><td class=line-number>91</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #32a852'>float</span>(<span style='color: #32a852'>bin64</span>(stri1[.. <span style='color: #d12234'>8</span>], LE));
 </td></tr>
-<tr><td class=line-number>92</td><td class=line>  end func;
+<tr><td class=line-number>92</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CVD(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>93</td><td class=line>
+<tr><td class=line-number>93</td><td class=line>        else
 </td></tr>
-<tr><td class=line-number>94</td><td class=line>
+<tr><td class=line-number>94</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>95</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: leftFrameColor  <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(leftSideColor, white, FRAME_THICKNESS);
+<tr><td class=line-number>95</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;CVD(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) IS ILLEGAL.&quot;</span>);
 </td></tr>
-<tr><td class=line-number>96</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: rightFrameColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(leftEdgeColor, white, FRAME_THICKNESS);
+<tr><td class=line-number>96</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
 </td></tr>
-<tr><td class=line-number>97</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: nearFrameColor  <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(nearSideColor, white, FRAME_THICKNESS);
+<tr><td class=line-number>97</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>98</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: farFrameColor   <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(nearEdgeColor, white, FRAME_THICKNESS);
+<tr><td class=line-number>98</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CVDMBF&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>99</td><td class=line>
+<tr><td class=line-number>99</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>100</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>array <span style='color: #32a852'>color</span></span>: nearLeftEdgeColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(nearSideColor, leftSideColor, <span style='color: #d12234'>3</span>);
+<tr><td class=line-number>100</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>101</td><td class=line>
+<tr><td class=line-number>101</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>102</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: nearRightEdgeColor <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(leftEdgeColor, nearSideColor, <span style='color: #d12234'>1</span>)[1];
+<tr><td class=line-number>102</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>103</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>color</span>: farLeftEdgeColor   <span style='color: #752091'>is</span> <span style='color: #3237c9'>colorScale</span>(nearEdgeColor, leftSideColor, <span style='color: #d12234'>1</span>)[1];
+<tr><td class=line-number>103</td><td class=line>        if <span style='color: #3237c9'>length</span>(stri1) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>8</span> then
 </td></tr>
-<tr><td class=line-number>104</td><td class=line>
+<tr><td class=line-number>104</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>mbfBits2Float</span>(<span style='color: #32a852'>bin64</span>(stri1[.. <span style='color: #d12234'>8</span>], LE));
 </td></tr>
-<tr><td class=line-number>105</td><td class=line><span style='color: #752091'>var</span> array PRIMITIVE_WINDOW: digit_pixmap <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> PRIMITIVE_WINDOW.value;
+<tr><td class=line-number>105</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CVDMBF(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>106</td><td class=line>
+<tr><td class=line-number>106</td><td class=line>        else
 </td></tr>
-<tr><td class=line-number>107</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>type</span>: tileType <span style='color: #752091'>is</span> <span style='color: #752091'>new</span> <span style='color: #752091'>struct</span>
+<tr><td class=line-number>107</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>108</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>array <span style='color: #32a852'>string</span></span>: pattern <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
+<tr><td class=line-number>108</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;CVDMBF(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) IS ILLEGAL.&quot;</span>);
 </td></tr>
-<tr><td class=line-number>109</td><td class=line>    <span style='color: #752091'>var</span> PRIMITIVE_WINDOW: pixmap <span style='color: #752091'>is</span> PRIMITIVE_WINDOW.value;
+<tr><td class=line-number>109</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
 </td></tr>
-<tr><td class=line-number>110</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: value <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>110</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>111</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: quantity <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>111</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CVI&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>112</td><td class=line>  end struct;
+<tr><td class=line-number>112</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>113</td><td class=line>
+<tr><td class=line-number>113</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>114</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>type</span>: fieldType <span style='color: #752091'>is</span> <span style='color: #752091'>new</span> <span style='color: #752091'>struct</span>
+<tr><td class=line-number>114</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>115</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>boolean</span>: used <span style='color: #752091'>is</span> <span style='color: #f23490'>FALSE</span>;
+<tr><td class=line-number>115</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>116</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>boolean</span>: present <span style='color: #752091'>is</span> <span style='color: #f23490'>FALSE</span>;
+<tr><td class=line-number>116</td><td class=line>        if <span style='color: #3237c9'>length</span>(stri1) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>2</span> then
 </td></tr>
-<tr><td class=line-number>117</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>boolean</span>: selected <span style='color: #752091'>is</span> <span style='color: #f23490'>FALSE</span>;
+<tr><td class=line-number>117</td><td class=line>          if <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>2</span>]) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>128</span> then
 </td></tr>
-<tr><td class=line-number>118</td><td class=line>    <span style='color: #752091'>var</span> PRIMITIVE_WINDOW: backup <span style='color: #752091'>is</span> PRIMITIVE_WINDOW.value;
+<tr><td class=line-number>118</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>((<span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>2</span>]) <span style='color: #ab492b'>-</span> <span style='color: #d12234'>256</span>) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span> <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>1</span>]));
 </td></tr>
-<tr><td class=line-number>119</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: tileNumber <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>119</td><td class=line>          else
 </td></tr>
-<tr><td class=line-number>120</td><td class=line>  end struct;
+<tr><td class=line-number>120</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>2</span>]) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span> <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>1</span>]));
 </td></tr>
-<tr><td class=line-number>121</td><td class=line>
+<tr><td class=line-number>121</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>122</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>type</span>: positionType <span style='color: #752091'>is</span> <span style='color: #752091'>new</span> <span style='color: #752091'>struct</span>
+<tr><td class=line-number>122</td><td class=line>          writeln(log, &quot;CVI(&quot; &lt;&amp; literal(stri1) &lt;&amp; &quot;) -&gt; &quot; &lt;&amp; exprResult);
 </td></tr>
-<tr><td class=line-number>123</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: level <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>123</td><td class=line>        <span style='color: #752091'>else</span>
 </td></tr>
-<tr><td class=line-number>124</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: line <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>124</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>125</td><td class=line>    <span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: column <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>125</td><td class=line>          writeln(err, &quot;CVI(&quot; &lt;&amp; literal(stri1) &lt;&amp; &quot;) IS ILLEGAL.&quot;);
 </td></tr>
-<tr><td class=line-number>126</td><td class=line>  end struct;
+<tr><td class=line-number>126</td><td class=line>          exprResult := 0.0;
 </td></tr>
-<tr><td class=line-number>127</td><td class=line>
+<tr><td class=line-number>127</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>128</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>type</span>: moveType <span style='color: #752091'>is</span> <span style='color: #752091'>new</span> <span style='color: #752091'>struct</span>
+<tr><td class=line-number>128</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CVL&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>129</td><td class=line>    <span style='color: #752091'>var</span> positionType: pos1 <span style='color: #752091'>is</span> positionType.value;
+<tr><td class=line-number>129</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>130</td><td class=line>    <span style='color: #752091'>var</span> positionType: pos2 <span style='color: #752091'>is</span> positionType.value;
+<tr><td class=line-number>130</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>131</td><td class=line>  end struct;
+<tr><td class=line-number>131</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>132</td><td class=line>
+<tr><td class=line-number>132</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>133</td><td class=line><span style='color: #752091'>const</span> <span style='color: #32a852'>type</span>: layoutType <span style='color: #752091'>is</span> <span style='color: #32a852'>array <span style='color: #32a852'>array <span style='color: #32a852'>string</span></span></span>;
+<tr><td class=line-number>133</td><td class=line>        if <span style='color: #3237c9'>length</span>(stri1) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>4</span> then
 </td></tr>
-<tr><td class=line-number>134</td><td class=line>
+<tr><td class=line-number>134</td><td class=line>          if <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>4</span>]) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>128</span> then
 </td></tr>
-<tr><td class=line-number>135</td><td class=line><span style='color: #752091'>var</span> array array array fieldType: field <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> fieldType.value;
+<tr><td class=line-number>135</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>((((<span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>4</span>]) <span style='color: #ab492b'>-</span> <span style='color: #d12234'>256</span>)  <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span> <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>3</span>])) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span>
 </td></tr>
-<tr><td class=line-number>136</td><td class=line><span style='color: #752091'>var</span> array moveType: demoMoves <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> moveType.value;
+<tr><td class=line-number>136</td><td class=line>                <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>2</span>])) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span> <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>1</span>]));
 </td></tr>
-<tr><td class=line-number>137</td><td class=line><span style='color: #752091'>var</span> array moveType: playerMoves <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span> <span style='color: #ab492b'>times</span> moveType.value;
+<tr><td class=line-number>137</td><td class=line>          else
 </td></tr>
-<tr><td class=line-number>138</td><td class=line><span style='color: #752091'>var</span> <span style='color: #32a852'>integer</span>: moveNumber <span style='color: #752091'>is</span> <span style='color: #d12234'>0</span>;
+<tr><td class=line-number>138</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(((<span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>4</span>]) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span> <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>3</span>])) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span>
 </td></tr>
-<tr><td class=line-number>139</td><td class=line><span style='color: #752091'>var</span> <span style='color: #32a852'>boolean</span>: doQuit <span style='color: #752091'>is</span> <span style='color: #f23490'>FALSE</span>;
+<tr><td class=line-number>139</td><td class=line>                <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>2</span>])) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256</span> <span style='color: #ab492b'>+</span> <span style='color: #3237c9'>ord</span>(stri1[<span style='color: #d12234'>1</span>]));
 </td></tr>
-<tr><td class=line-number>140</td><td class=line>
+<tr><td class=line-number>140</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>141</td><td class=line>
+<tr><td class=line-number>141</td><td class=line>          writeln(log, &quot;CVL(&quot; &lt;&amp; literal(stri1) &lt;&amp; &quot;) -&gt; &quot; &lt;&amp; exprResult);
 </td></tr>
-<tr><td class=line-number>142</td><td class=line><span style='color: #752091'>var</span> layoutType: welcomeLayout <span style='color: #752091'>is</span> [](
+<tr><td class=line-number>142</td><td class=line>        <span style='color: #752091'>else</span>
 </td></tr>
-<tr><td class=line-number>143</td><td class=line>
+<tr><td class=line-number>143</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>144</td><td class=line> [](<span style='color: #bf1f53'>&quot;   X     X     X     X   X   &quot;</span>,
+<tr><td class=line-number>144</td><td class=line>          writeln(err, &quot;CVL(&quot; &lt;&amp; literal(stri1) &lt;&amp; &quot;) IS ILLEGAL.&quot;);
 </td></tr>
-<tr><td class=line-number>145</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>145</td><td class=line>          exprResult := 0.0;
 </td></tr>
-<tr><td class=line-number>146</td><td class=line>    <span style='color: #bf1f53'>&quot;   X X X X   X   X   X   X   &quot;</span>,
+<tr><td class=line-number>146</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>147</td><td class=line>    <span style='color: #bf1f53'>&quot;                       X     &quot;</span>,
+<tr><td class=line-number>147</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CVS&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>148</td><td class=line>    <span style='color: #bf1f53'>&quot;               X             &quot;</span>,
+<tr><td class=line-number>148</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>149</td><td class=line>    <span style='color: #bf1f53'>&quot;   X     X   X   X   X   X   &quot;</span>,
+<tr><td class=line-number>149</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>150</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>150</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>151</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>151</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>152</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>152</td><td class=line>        if <span style='color: #3237c9'>length</span>(stri1) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>4</span> then
 </td></tr>
-<tr><td class=line-number>153</td><td class=line>    <span style='color: #bf1f53'>&quot;    X    X X    X   X    X   &quot;</span>,
+<tr><td class=line-number>153</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #32a852'>float</span>(<span style='color: #32a852'>bin32</span>(stri1[.. <span style='color: #d12234'>4</span>], LE));
 </td></tr>
-<tr><td class=line-number>154</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>154</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CVS(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>155</td><td class=line>    <span style='color: #bf1f53'>&quot;    X   X   X   X       X    &quot;</span>,
+<tr><td class=line-number>155</td><td class=line>        else
 </td></tr>
-<tr><td class=line-number>156</td><td class=line>    <span style='color: #bf1f53'>&quot;X                 X X        &quot;</span>,
+<tr><td class=line-number>156</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>157</td><td class=line>    <span style='color: #bf1f53'>&quot;        X   X           X   X&quot;</span>,
+<tr><td class=line-number>157</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;CVS(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) IS ILLEGAL.&quot;</span>);
 </td></tr>
-<tr><td class=line-number>158</td><td class=line>    <span style='color: #bf1f53'>&quot; X X      X     X   X     X  &quot;</span>),
+<tr><td class=line-number>158</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
 </td></tr>
-<tr><td class=line-number>159</td><td class=line>
+<tr><td class=line-number>159</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>160</td><td class=line> [](<span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>160</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;CVSMBF&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>161</td><td class=line>    <span style='color: #bf1f53'>&quot;    X   X     X X    X   X   &quot;</span>,
+<tr><td class=line-number>161</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>162</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>162</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>163</td><td class=line>    <span style='color: #bf1f53'>&quot;      X                X     &quot;</span>,
+<tr><td class=line-number>163</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
 </td></tr>
-<tr><td class=line-number>164</td><td class=line>    <span style='color: #bf1f53'>&quot;   X     X   X   X   X   X   &quot;</span>,
+<tr><td class=line-number>164</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>165</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>165</td><td class=line>        if <span style='color: #3237c9'>length</span>(stri1) <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>4</span> then
 </td></tr>
-<tr><td class=line-number>166</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>166</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>mbfBits2Float</span>(<span style='color: #32a852'>bin32</span>(stri1[.. <span style='color: #d12234'>4</span>], LE));
 </td></tr>
-<tr><td class=line-number>167</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>167</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;CVSMBF(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
 </td></tr>
-<tr><td class=line-number>168</td><td class=line>    <span style='color: #bf1f53'>&quot;                             &quot;</span>,
+<tr><td class=line-number>168</td><td class=line>        else
 </td></tr>
-<tr><td class=line-number>169</td><td class=line>    <span style='color: #bf1f53'>&quot;   X      X               X  &quot;</span>,
+<tr><td class=line-number>169</td><td class=line>          error_marker;
 </td></tr>
-<tr><td class=line-number>170</td><td class=line>    <span style='color: #bf1f53'>&quot;        X   X           X    &quot;</span>,
+<tr><td class=line-number>170</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;CVSMBF(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) IS ILLEGAL.&quot;</span>);
 </td></tr>
-<tr><td class=line-number>171</td><td class=line>    <span style='color: #bf1f53'>&quot;    X            X  X        &quot;</span>,
+<tr><td class=line-number>171</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
 </td></tr>
-<tr><td class=line-number>172</td><td class=line>    <span style='color: #bf1f53'>&quot;        X   X           X   X&quot;</span>,
+<tr><td class=line-number>172</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
 </td></tr>
-<tr><td class=line-number>173</td><td class=line>    <span style='color: #bf1f53'>&quot;X   X           X  X         &quot;</span>,
+<tr><td class=line-number>173</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;EOF&quot;</span>}:
 </td></tr>
-<tr><td class=line-number>174</td><td class=line>    <span style='color: #bf1f53'>&quot;  X      X X             X X &quot;</span>));
+<tr><td class=line-number>174</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
 </td></tr>
-<tr><td class=line-number>175</td><td class=line>
+<tr><td class=line-number>175</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
 </td></tr>
-<tr><td class=line-number>176</td><td class=line>
+<tr><td class=line-number>176</td><td class=line>        index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>177</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>178</td><td class=line>        aFile <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getFileValue</span>(index1);
+</td></tr>
+<tr><td class=line-number>179</td><td class=line>        if aFile <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #ff1223'>STD_NULL</span> then
+</td></tr>
+<tr><td class=line-number>180</td><td class=line>          if <span style='color: #3237c9'>hasNext</span>(aFile) then
+</td></tr>
+<tr><td class=line-number>181</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>182</td><td class=line>          else
+</td></tr>
+<tr><td class=line-number>183</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #ab492b'>-</span><span style='color: #d12234'>1.0</span>;
+</td></tr>
+<tr><td class=line-number>184</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>185</td><td class=line>          writeln(log, &quot;EOF(&quot; &lt;&amp; index1 &lt;&amp; &quot;) -&gt; &quot; &lt;&amp; exprResult);
+</td></tr>
+<tr><td class=line-number>186</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>187</td><td class=line>          error_marker;
+</td></tr>
+<tr><td class=line-number>188</td><td class=line>          writeln(err, &quot;FILE #&quot; &lt;&amp; index1 &lt;&amp; &quot; NOT OPEN IN EOF.&quot;);
+</td></tr>
+<tr><td class=line-number>189</td><td class=line>          exprResult := -1.0;
+</td></tr>
+<tr><td class=line-number>190</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>191</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;ERL&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>192</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>193</td><td class=line>        if error_linenum <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #bf1f53'>&quot;&quot;</span> <span style='color: #ab492b'>and</span> error_linenum[<span style='color: #d12234'>1</span>] <span style='color: #ab492b'>in</span> digit_char then
+</td></tr>
+<tr><td class=line-number>194</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #32a852'>integer</span>(error_linenum));
+</td></tr>
+<tr><td class=line-number>195</td><td class=line>        else
+</td></tr>
+<tr><td class=line-number>196</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>197</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>198</td><td class=line>        writeln(log, &quot;ERL -&gt; &quot; &lt;&amp; exprResult);
+</td></tr>
+<tr><td class=line-number>199</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;ERR&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>200</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>201</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(error_code);
+</td></tr>
+<tr><td class=line-number>202</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;ERR -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>203</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;EXP&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>204</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>205</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>206</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>207</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>208</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exp</span>(num1);
+</td></tr>
+<tr><td class=line-number>209</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;EXP(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>210</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;FIX&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>211</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>212</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>213</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>214</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>215</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>trunc</span>(num1));
+</td></tr>
+<tr><td class=line-number>216</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;FIX(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>217</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;FN&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>218</td><td class=line>        variable_name <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_name</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>219</td><td class=line>        if variable_name <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #bf1f53'>&quot;FN&quot;</span> <span style='color: #ab492b'>or</span> (<span style='color: #bf1f53'>&quot;FN&quot;</span> <span style='color: #ab492b'>&amp;</span> symbol) <span style='color: #ab492b'>not</span> in def_fn_list then
+</td></tr>
+<tr><td class=line-number>220</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getNumericVar</span>(variable_name);
+</td></tr>
+<tr><td class=line-number>221</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, variable_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; is &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>222</td><td class=line>        else
+</td></tr>
+<tr><td class=line-number>223</td><td class=line>          func_name <span style='color: #ab492b'>:=</span> <span style='color: #bf1f53'>&quot;FN&quot;</span> <span style='color: #ab492b'>&amp;</span> symbol;
+</td></tr>
+<tr><td class=line-number>224</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_function</span>(def_fn_list[func_name], symbol, line);
+</td></tr>
+<tr><td class=line-number>225</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;function &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> func_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; is &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>226</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>227</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;FRE&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>228</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>229</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>230</td><td class=line>        if <span style='color: #3237c9'>isStringExpr</span>(symbol) then
+</td></tr>
+<tr><td class=line-number>231</td><td class=line>          stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
+</td></tr>
+<tr><td class=line-number>232</td><td class=line>        else
+</td></tr>
+<tr><td class=line-number>233</td><td class=line>          num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>234</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>235</td><td class=line>        expect(&quot;)&quot;, symbol, line);
+</td></tr>
+<tr><td class=line-number>236</td><td class=line>        exprResult := 32767.0;
+</td></tr>
+<tr><td class=line-number>237</td><td class=line>        writeln(log, &quot;FRE -&gt; &quot; &lt;&amp; exprResult);
+</td></tr>
+<tr><td class=line-number>238</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;FREEFILE&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>239</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>240</td><td class=line>        index1 <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>1</span>;
+</td></tr>
+<tr><td class=line-number>241</td><td class=line>        while <span style='color: #3237c9'>getFileValue</span>(index1) <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #ff1223'>STD_NULL</span> do
+</td></tr>
+<tr><td class=line-number>242</td><td class=line>          <span style='color: #3237c9'>incr</span>(index1);
+</td></tr>
+<tr><td class=line-number>243</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>while</span>;
+</td></tr>
+<tr><td class=line-number>244</td><td class=line>        exprResult := flt(index1);
+</td></tr>
+<tr><td class=line-number>245</td><td class=line>        writeln(log, &quot;FREEFILE -&gt; &quot; &lt;&amp; exprResult);
+</td></tr>
+<tr><td class=line-number>246</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;INP&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>247</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>248</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>249</td><td class=line>        index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>250</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>251</td><td class=line>        case index1 of
+</td></tr>
+<tr><td class=line-number>252</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>16#60</span>}:  <span style='font-style: italic;color: #9fa0b5'># &amp;H60/96    Get keyboard scan code</span>
+</td></tr>
+<tr><td class=line-number>253</td><td class=line>            <span style='color: #752091'>if</span> <span style='color: #3237c9'>inputReady</span>(KEYBOARD) then
+</td></tr>
+<tr><td class=line-number>254</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>keyboardScanCode</span>(<span style='color: #3237c9'>getc</span>(KEYBOARD)));
+</td></tr>
+<tr><td class=line-number>255</td><td class=line>            <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>256</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>128.0</span>; <span style='font-style: italic;color: #9fa0b5'># This is a key release code</span>
+</td></tr>
+<tr><td class=line-number>257</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>258</td><td class=line>          when {<span style='color: #d12234'>16#3DA</span>}: <span style='font-style: italic;color: #9fa0b5'># &amp;H3DA/986  Indicate vertical retrace</span>
+</td></tr>
+<tr><td class=line-number>259</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>rand</span>(<span style='color: #d12234'>0</span>, <span style='color: #d12234'>1</span>) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>8</span>);
+</td></tr>
+<tr><td class=line-number>260</td><td class=line>          otherwise:
+</td></tr>
+<tr><td class=line-number>261</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>262</td><td class=line>        end <span style='color: #752091'>case</span>;
+</td></tr>
+<tr><td class=line-number>263</td><td class=line>        writeln(log, <span style='color: #bf1f53'>&quot;**INP(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span><span style='color: #bf1f53'> &quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>264</td><td class=line>      <span style='color: #752091'>when</span> {<span style='color: #bf1f53'>&quot;INSTR&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>265</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>266</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>267</td><td class=line>        <span style='color: #752091'>if</span> <span style='color: #752091'>is</span>Str<span style='color: #ab492b'>in</span><span style='color: #3237c9'>gExpr</span>(symbol) then
+</td></tr>
+<tr><td class=line-number>268</td><td class=line>          <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>1</span>;
+</td></tr>
+<tr><td class=line-number>269</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>270</td><td class=line>          <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>271</td><td class=line>          <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;,&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>272</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>273</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
+</td></tr>
+<tr><td class=line-number>274</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;,&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>275</td><td class=line>        stri2 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
+</td></tr>
+<tr><td class=line-number>276</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>277</td><td class=line>        <span style='color: #752091'>if</span> <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>1</span> then
+</td></tr>
+<tr><td class=line-number>278</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>pos</span>(stri1, stri2, index1));
+</td></tr>
+<tr><td class=line-number>279</td><td class=line>          write(log, &quot;INSTR(&quot;);
+</td></tr>
+<tr><td class=line-number>280</td><td class=line>          <span style='color: #752091'>if</span> <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #d12234'>1</span> then
+</td></tr>
+<tr><td class=line-number>281</td><td class=line>            write(log, <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span>);
+</td></tr>
+<tr><td class=line-number>282</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>283</td><td class=line>          writeln(log, literal(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri2) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>284</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>285</td><td class=line>          err<span style='color: #ab492b'>or</span>_marker;
+</td></tr>
+<tr><td class=line-number>286</td><td class=line>          writeln(err, &quot;INSTR(&quot; <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span>
+</td></tr>
+<tr><td class=line-number>287</td><td class=line>              <span style='color: #3237c9'>literal</span>(stri2) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) - ILLEGAL FUNCTION CALL&quot;</span>);
+</td></tr>
+<tr><td class=line-number>288</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>289</td><td class=line>      <span style='color: #752091'>when</span> {&quot;INT&quot;}:
+</td></tr>
+<tr><td class=line-number>290</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>291</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>292</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>293</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>294</td><td class=line>        <span style='color: #ab492b'>exp</span>rResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>floor</span>(num1);
+</td></tr>
+<tr><td class=line-number>295</td><td class=line>        writeln(log, &quot;INT(&quot; <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>296</td><td class=line>      <span style='color: #752091'>when</span> {&quot;LBOUND&quot;}:
+</td></tr>
+<tr><td class=line-number>297</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>298</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>299</td><td class=line>        <span style='color: #752091'>var</span>iable_name <span style='color: #ab492b'>:=</span> symbol;
+</td></tr>
+<tr><td class=line-number>300</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>301</td><td class=line>        <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;,&quot;</span> then
+</td></tr>
+<tr><td class=line-number>302</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>303</td><td class=line>          <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>304</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>305</td><td class=line>          <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>1</span>;
+</td></tr>
+<tr><td class=line-number>306</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>307</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>308</td><td class=line>        <span style='color: #ab492b'>exp</span>rResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>exec_lbound</span>(variable_name, index1));
+</td></tr>
+<tr><td class=line-number>309</td><td class=line>        writeln(log, &quot;LBOUND(&quot; <span style='color: #ab492b'>&lt;&amp;</span> variable_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>310</td><td class=line>      <span style='color: #752091'>when</span> {&quot;LEN&quot;}:
+</td></tr>
+<tr><td class=line-number>311</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>312</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>313</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
+</td></tr>
+<tr><td class=line-number>314</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>315</td><td class=line>        <span style='color: #ab492b'>exp</span>rResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>length</span>(stri1));
+</td></tr>
+<tr><td class=line-number>316</td><td class=line>        writeln(log, &quot;LEN(&quot; <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri1) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>317</td><td class=line>      <span style='color: #752091'>when</span> {&quot;LOF&quot;}:
+</td></tr>
+<tr><td class=line-number>318</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>319</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>320</td><td class=line>        <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>321</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>322</td><td class=line>        aFile <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getFileValue</span>(index1);
+</td></tr>
+<tr><td class=line-number>323</td><td class=line>        <span style='color: #752091'>if</span> aFile <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #ff1223'>STD_NULL</span> then
+</td></tr>
+<tr><td class=line-number>324</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>length</span>(aFile));
+</td></tr>
+<tr><td class=line-number>325</td><td class=line>          writeln(log, &quot;LOF(&quot; <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>326</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>327</td><td class=line>          err<span style='color: #ab492b'>or</span>_marker;
+</td></tr>
+<tr><td class=line-number>328</td><td class=line>          writeln(err, &quot;FILE #&quot; <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; NOT OPEN IN LOF.&quot;</span>);
+</td></tr>
+<tr><td class=line-number>329</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>330</td><td class=line>      <span style='color: #752091'>when</span> {&quot;LOG&quot;}:
+</td></tr>
+<tr><td class=line-number>331</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>332</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>333</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>334</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>335</td><td class=line>        <span style='color: #752091'>if</span> num1 <span style='color: #ab492b'>&gt;</span> <span style='color: #d12234'>0.0</span> then
+</td></tr>
+<tr><td class=line-number>336</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>log</span>(num1);
+</td></tr>
+<tr><td class=line-number>337</td><td class=line>          writeln(log, &quot;LOG(&quot; <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>338</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>339</td><td class=line>          err<span style='color: #ab492b'>or</span>_marker;
+</td></tr>
+<tr><td class=line-number>340</td><td class=line>          writeln(err, &quot;LOG(&quot; <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) - ILLEGAL FUNCTION CALL&quot;</span>);
+</td></tr>
+<tr><td class=line-number>341</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>342</td><td class=line>      <span style='color: #752091'>when</span> {&quot;PEEK&quot;}:
+</td></tr>
+<tr><td class=line-number>343</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>344</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>345</td><td class=line>        <span style='color: #ab492b'>in</span>dex1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>346</td><td class=line>        <span style='color: #ab492b'>exp</span><span style='color: #3237c9'>ect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>347</td><td class=line>        <span style='color: #752091'>case</span> <span style='color: #ab492b'>in</span>dex1 <span style='color: #752091'>of</span>
+</td></tr>
+<tr><td class=line-number>348</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>16</span>}:    # Is it a bw or color screen?
+</td></tr>
+<tr><td class=line-number>349</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>35.0</span>;
+</td></tr>
+<tr><td class=line-number>350</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>1040</span>}:  # Is it a bw or color screen?
+</td></tr>
+<tr><td class=line-number>351</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>35.0</span>;
+</td></tr>
+<tr><td class=line-number>352</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>16#6c</span>}: # &amp;H6c contains the low order tick count <span style='color: #752091'>of</span> <span style='color: #d12234'>0</span><span style='color: #ab492b'>-</span><span style='color: #d12234'>255</span>
+</td></tr>
+<tr><td class=line-number>353</td><td class=line>            time_now <span style='color: #ab492b'>:=</span> <span style='color: #32a852'>time</span>(NOW);
+</td></tr>
+<tr><td class=line-number>354</td><td class=line>            since_midnight <span style='color: #ab492b'>:=</span> time_now <span style='color: #ab492b'>-</span> <span style='color: #3237c9'>truncToDay</span>(time_now);
+</td></tr>
+<tr><td class=line-number>355</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>18.2</span> <span style='color: #ab492b'>*</span> (<span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>toSeconds</span>(since_midnight)) <span style='color: #ab492b'>+</span>
+</td></tr>
+<tr><td class=line-number>356</td><td class=line>                <span style='color: #3237c9'>flt</span>(since_midnight.micro_second) <span style='color: #ab492b'>/</span> <span style='color: #d12234'>1000000.0</span>);
+</td></tr>
+<tr><td class=line-number>357</td><td class=line>            exprResult <span style='color: #ab492b'>-:=</span> <span style='color: #3237c9'>floor</span>(exprResult <span style='color: #ab492b'>/</span> <span style='color: #d12234'>256.0</span>) <span style='color: #ab492b'>*</span> <span style='color: #d12234'>256.0</span>;
+</td></tr>
+<tr><td class=line-number>358</td><td class=line>            index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(exprResult);
+</td></tr>
+<tr><td class=line-number>359</td><td class=line>            if index1 <span style='color: #ab492b'>&lt;</span> <span style='color: #d12234'>0</span> then
+</td></tr>
+<tr><td class=line-number>360</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>361</td><td class=line>            elsif index1 <span style='color: #ab492b'>&gt;</span> <span style='color: #d12234'>255</span> then
+</td></tr>
+<tr><td class=line-number>362</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>255.0</span>;
+</td></tr>
+<tr><td class=line-number>363</td><td class=line>            else
+</td></tr>
+<tr><td class=line-number>364</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(index1);
+</td></tr>
+<tr><td class=line-number>365</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>366</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>49152</span>, <span style='color: #ab492b'>-</span><span style='color: #d12234'>16384</span>}: # Read <span style='color: #752091'>key</span>board
+</td></tr>
+<tr><td class=line-number>367</td><td class=line>            <span style='color: #752091'>if</span> inputReady(KEYBOARD) then
+</td></tr>
+<tr><td class=line-number>368</td><td class=line>              current_key <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getc</span>(KEYBOARD);
+</td></tr>
+<tr><td class=line-number>369</td><td class=line>              if current_key <span style='color: #ab492b'>=</span> KEY_NL then
+</td></tr>
+<tr><td class=line-number>370</td><td class=line>                current_key <span style='color: #ab492b'>:=</span> KEY_CR;
+</td></tr>
+<tr><td class=line-number>371</td><td class=line>              elsif current_key <span style='color: #ab492b'>&gt;</span>= <span style='color: #cfe111'>&#39;\<span style='color: #d12234'>128</span>;&#39;</span> then
+</td></tr>
+<tr><td class=line-number>372</td><td class=line>                current_key <span style='color: #ab492b'>:=</span> <span style='color: #cfe111'>&#39;\0;&#39;</span>;
+</td></tr>
+<tr><td class=line-number>373</td><td class=line>              <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>374</td><td class=line>              # Return value &gt;= 128 <span style='color: #752091'>if</span> a <span style='color: #752091'>key</span> has been pressed.
+</td></tr>
+<tr><td class=line-number>375</td><td class=line>              exprResult := flt(ord(current_<span style='color: #752091'>key</span>) + 128);
+</td></tr>
+<tr><td class=line-number>376</td><td class=line>            <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>377</td><td class=line>              exprResult := 0.0;
+</td></tr>
+<tr><td class=line-number>378</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>379</td><td class=line>          <span style='color: #752091'>otherwise</span>:
+</td></tr>
+<tr><td class=line-number>380</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>381</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>case</span>;
+</td></tr>
+<tr><td class=line-number>382</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;**PEEK(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>383</td><td class=line>      when {<span style='color: #bf1f53'>&quot;POINT&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>384</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>385</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>386</td><td class=line>        index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>387</td><td class=line>        <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;,&quot;</span> then
+</td></tr>
+<tr><td class=line-number>388</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>389</td><td class=line>          index2 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>390</td><td class=line>          <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>391</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>392</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;**POINT(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index2 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>393</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>394</td><td class=line>          <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>395</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>396</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;**POINT(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>397</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>398</td><td class=line>      when {<span style='color: #bf1f53'>&quot;POS&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>399</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>400</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>401</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>402</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>403</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>column</span>(win));
+</td></tr>
+<tr><td class=line-number>404</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;POS -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>405</td><td class=line>      when {<span style='color: #bf1f53'>&quot;RND&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>406</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>407</td><td class=line>        <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;(&quot;</span> then
+</td></tr>
+<tr><td class=line-number>408</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>409</td><td class=line>          <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #bf1f53'>&quot;)&quot;</span> then
+</td></tr>
+<tr><td class=line-number>410</td><td class=line>            num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>411</td><td class=line>            <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>412</td><td class=line>            <span style='color: #752091'>if</span> num1 <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #d12234'>0.0</span> then
+</td></tr>
+<tr><td class=line-number>413</td><td class=line>              lastRandomNumber <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>rand</span>(<span style='color: #d12234'>0.0</span>, <span style='color: #d12234'>1.0</span>);
+</td></tr>
+<tr><td class=line-number>414</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>415</td><td class=line>          <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>416</td><td class=line>            <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>417</td><td class=line>            lastRandomNumber <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>rand</span>(<span style='color: #d12234'>0.0</span>, <span style='color: #d12234'>1.0</span>);
+</td></tr>
+<tr><td class=line-number>418</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>419</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>420</td><td class=line>          lastRandomNumber <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>rand</span>(<span style='color: #d12234'>0.0</span>, <span style='color: #d12234'>1.0</span>);
+</td></tr>
+<tr><td class=line-number>421</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>422</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> lastRandomNumber;
+</td></tr>
+<tr><td class=line-number>423</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;RND -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>424</td><td class=line>      when {<span style='color: #bf1f53'>&quot;SCREEN&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>425</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>426</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>427</td><td class=line>        index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>428</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;,&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>429</td><td class=line>        index2 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>430</td><td class=line>        <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;,&quot;</span> then
+</td></tr>
+<tr><td class=line-number>431</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>432</td><td class=line>          num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>433</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>434</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>435</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>32.0</span>;
+</td></tr>
+<tr><td class=line-number>436</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;**SCREEN(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index2 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>437</td><td class=line>      when {<span style='color: #bf1f53'>&quot;SGN&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>438</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>439</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>440</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>441</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>442</td><td class=line>        <span style='color: #752091'>if</span> num1 <span style='color: #ab492b'>&gt;</span> <span style='color: #d12234'>0.0</span> then
+</td></tr>
+<tr><td class=line-number>443</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>1.0</span>;
+</td></tr>
+<tr><td class=line-number>444</td><td class=line>        <span style='color: #752091'>elsif</span> num1 <span style='color: #ab492b'>=</span> <span style='color: #d12234'>0.0</span> then
+</td></tr>
+<tr><td class=line-number>445</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>446</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>447</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #ab492b'>-</span><span style='color: #d12234'>1.0</span>;
+</td></tr>
+<tr><td class=line-number>448</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>449</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;SGN(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>450</td><td class=line>      when {<span style='color: #bf1f53'>&quot;SIN&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>451</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>452</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>453</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>454</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>455</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>sin</span>(num1);
+</td></tr>
+<tr><td class=line-number>456</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;SIN(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>457</td><td class=line>      when {<span style='color: #bf1f53'>&quot;SQR&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>458</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>459</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>460</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>461</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>462</td><td class=line>        <span style='color: #752091'>if</span> num1 <span style='color: #ab492b'>&gt;</span>= <span style='color: #d12234'>0.0</span> then
+</td></tr>
+<tr><td class=line-number>463</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>sqrt</span>(num1);
+</td></tr>
+<tr><td class=line-number>464</td><td class=line>          <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;SQR(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>465</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>466</td><td class=line>          error_marker;
+</td></tr>
+<tr><td class=line-number>467</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;SQR(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) - ILLEGAL FUNCTION CALL&quot;</span>);
+</td></tr>
+<tr><td class=line-number>468</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>469</td><td class=line>      when {<span style='color: #bf1f53'>&quot;STRIG&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>470</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>471</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>472</td><td class=line>        index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>473</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>474</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>475</td><td class=line>        current_key <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getc</span>(KEYBOARD, NO_WAIT);
+</td></tr>
+<tr><td class=line-number>476</td><td class=line>        <span style='color: #752091'>case</span> index1 <span style='color: #752091'>of</span>
+</td></tr>
+<tr><td class=line-number>477</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>0</span>, <span style='color: #d12234'>1</span>}:
+</td></tr>
+<tr><td class=line-number>478</td><td class=line>            if current_key <span style='color: #ab492b'>=</span> KEY_MOUSE1 then
+</td></tr>
+<tr><td class=line-number>479</td><td class=line>              current_key <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getc</span>(KEYBOARD);
+</td></tr>
+<tr><td class=line-number>480</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #ab492b'>-</span><span style='color: #d12234'>1.0</span>;
+</td></tr>
+<tr><td class=line-number>481</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>482</td><td class=line>          <span style='color: #752091'>when</span> {<span style='color: #d12234'>4</span>, <span style='color: #d12234'>5</span>}:
+</td></tr>
+<tr><td class=line-number>483</td><td class=line>            if current_key <span style='color: #ab492b'>=</span> KEY_MOUSE3 then
+</td></tr>
+<tr><td class=line-number>484</td><td class=line>              current_key <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getc</span>(KEYBOARD);
+</td></tr>
+<tr><td class=line-number>485</td><td class=line>              exprResult <span style='color: #ab492b'>:=</span> <span style='color: #ab492b'>-</span><span style='color: #d12234'>1.0</span>;
+</td></tr>
+<tr><td class=line-number>486</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>487</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>case</span>;
+</td></tr>
+<tr><td class=line-number>488</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;**STRIG(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>489</td><td class=line>      when {<span style='color: #bf1f53'>&quot;TAN&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>490</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>491</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>492</td><td class=line>        num1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>493</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>494</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>tan</span>(num1);
+</td></tr>
+<tr><td class=line-number>495</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;TAN(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> num1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>496</td><td class=line>      when {<span style='color: #bf1f53'>&quot;TIMER&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>497</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>498</td><td class=line>        time_now <span style='color: #ab492b'>:=</span> <span style='color: #32a852'>time</span>(NOW);
+</td></tr>
+<tr><td class=line-number>499</td><td class=line>        since_midnight <span style='color: #ab492b'>:=</span> time_now <span style='color: #ab492b'>-</span> <span style='color: #3237c9'>truncToDay</span>(time_now);
+</td></tr>
+<tr><td class=line-number>500</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>toSeconds</span>(since_midnight)) <span style='color: #ab492b'>+</span>
+</td></tr>
+<tr><td class=line-number>501</td><td class=line>            <span style='color: #3237c9'>flt</span>(since_midnight.micro_second) <span style='color: #ab492b'>/</span> <span style='color: #d12234'>1000000.0</span>;
+</td></tr>
+<tr><td class=line-number>502</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;TIMER -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>503</td><td class=line>      when {<span style='color: #bf1f53'>&quot;UBOUND&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>504</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>505</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>506</td><td class=line>        variable_name <span style='color: #ab492b'>:=</span> symbol;
+</td></tr>
+<tr><td class=line-number>507</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>508</td><td class=line>        <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;,&quot;</span> then
+</td></tr>
+<tr><td class=line-number>509</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>510</td><td class=line>          index1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>round</span>(<span style='color: #3237c9'>exec_expr</span>(symbol, line));
+</td></tr>
+<tr><td class=line-number>511</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>512</td><td class=line>          index1 <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>1</span>;
+</td></tr>
+<tr><td class=line-number>513</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>514</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>515</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>exec_ubound</span>(variable_name, index1));
+</td></tr>
+<tr><td class=line-number>516</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;UBOUND(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> variable_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;, &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> index1 <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>517</td><td class=line>      when {<span style='color: #bf1f53'>&quot;VAL&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>518</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>519</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>520</td><td class=line>        stri1 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_str_expr</span>(symbol, line, unused_name);
+</td></tr>
+<tr><td class=line-number>521</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>522</td><td class=line>        stri2 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(stri1);
+</td></tr>
+<tr><td class=line-number>523</td><td class=line>        <span style='color: #752091'>if</span> stri2 <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;-&quot;</span> then
+</td></tr>
+<tr><td class=line-number>524</td><td class=line>          stri2 <span style='color: #ab492b'>&amp;:=</span> <span style='color: #3237c9'>get_symbol</span>(stri1);
+</td></tr>
+<tr><td class=line-number>525</td><td class=line>        <span style='color: #752091'>elsif</span> stri2 <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;+&quot;</span> then
+</td></tr>
+<tr><td class=line-number>526</td><td class=line>          stri2 <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(stri1);
+</td></tr>
+<tr><td class=line-number>527</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>528</td><td class=line>        <span style='color: #752091'>block</span>
+</td></tr>
+<tr><td class=line-number>529</td><td class=line>          exprResult <span style='color: #ab492b'>:=</span> <span style='color: #32a852'>float</span>(stri2);
+</td></tr>
+<tr><td class=line-number>530</td><td class=line>        <span style='color: #752091'>exception</span>
+</td></tr>
+<tr><td class=line-number>531</td><td class=line>          catch RANGE_ERROR:
+</td></tr>
+<tr><td class=line-number>532</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #d12234'>0.0</span>;
+</td></tr>
+<tr><td class=line-number>533</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>block</span>;
+</td></tr>
+<tr><td class=line-number>534</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;VAL(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(stri2) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>535</td><td class=line>      when {<span style='color: #bf1f53'>&quot;VARPTR&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>536</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>537</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;(&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>538</td><td class=line>        variable_name <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_name</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>539</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>540</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>flt</span>(<span style='color: #3237c9'>varptr</span>(variable_name));
+</td></tr>
+<tr><td class=line-number>541</td><td class=line>        <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;VARPTR(&quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> variable_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;) -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>542</td><td class=line>      when {<span style='color: #bf1f53'>&quot;(&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>543</td><td class=line>        symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>544</td><td class=line>        exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_expr</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>545</td><td class=line>        <span style='color: #3237c9'>expect</span>(<span style='color: #bf1f53'>&quot;)&quot;</span>, symbol, line);
+</td></tr>
+<tr><td class=line-number>546</td><td class=line>      when {<span style='color: #bf1f53'>&quot;%&quot;</span>}:
+</td></tr>
+<tr><td class=line-number>547</td><td class=line>        variable_name <span style='color: #ab492b'>:=</span> <span style='color: #bf1f53'>&quot;&quot;</span>;
+</td></tr>
+<tr><td class=line-number>548</td><td class=line>        <span style='color: #752091'>repeat</span>
+</td></tr>
+<tr><td class=line-number>549</td><td class=line>          variable_name <span style='color: #ab492b'>&amp;:=</span> symbol;
+</td></tr>
+<tr><td class=line-number>550</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>551</td><td class=line>          <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #bf1f53'>&quot;&quot;</span> <span style='color: #ab492b'>and</span> symbol[<span style='color: #d12234'>1</span>] <span style='color: #ab492b'>in</span> alphanum_char then
+</td></tr>
+<tr><td class=line-number>552</td><td class=line>            variable_name <span style='color: #ab492b'>&amp;:=</span> symbol;
+</td></tr>
+<tr><td class=line-number>553</td><td class=line>            symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>554</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>555</td><td class=line>        <span style='color: #752091'>until</span> symbol <span style='color: #ab492b'>&lt;&gt;</span> <span style='color: #bf1f53'>&quot;_&quot;</span>;
+</td></tr>
+<tr><td class=line-number>556</td><td class=line>        app<span style='color: #752091'>end</span>_<span style='color: #ab492b'>in</span><span style='color: #3237c9'>dex</span>(variable_name, symbol, line);
+</td></tr>
+<tr><td class=line-number>557</td><td class=line>        <span style='color: #ab492b'>exp</span>rResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getNumericVar</span>(variable_name);
+</td></tr>
+<tr><td class=line-number>558</td><td class=line>        writeln(log, variable_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; is &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>559</td><td class=line>      otherwise:
+</td></tr>
+<tr><td class=line-number>560</td><td class=line>        <span style='color: #752091'>if</span> symbol[<span style='color: #d12234'>1</span>] <span style='color: #ab492b'>in</span> digit_char then
+</td></tr>
+<tr><td class=line-number>561</td><td class=line>          <span style='color: #752091'>if</span> symbol[<span style='color: #3237c9'>length</span>(symbol)] <span style='color: #ab492b'>in</span> number_suffix then
+</td></tr>
+<tr><td class=line-number>562</td><td class=line>            symbol <span style='color: #ab492b'>:=</span> symbol[.. <span style='color: #3237c9'>pred</span>(<span style='color: #3237c9'>length</span>(symbol))];
+</td></tr>
+<tr><td class=line-number>563</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>564</td><td class=line>          <span style='color: #752091'>block</span>
+</td></tr>
+<tr><td class=line-number>565</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #32a852'>float</span>(symbol);
+</td></tr>
+<tr><td class=line-number>566</td><td class=line>          <span style='color: #752091'>exception</span>
+</td></tr>
+<tr><td class=line-number>567</td><td class=line>            catch RANGE_ERROR:
+</td></tr>
+<tr><td class=line-number>568</td><td class=line>              error_marker;
+</td></tr>
+<tr><td class=line-number>569</td><td class=line>              <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;ERROR IN PARSE NUMBER &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(symbol) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;.&quot;</span>);
+</td></tr>
+<tr><td class=line-number>570</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>block</span>;
+</td></tr>
+<tr><td class=line-number>571</td><td class=line>          symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>572</td><td class=line>        <span style='color: #752091'>elsif</span> symbol[<span style='color: #d12234'>1</span>] <span style='color: #ab492b'>&gt;</span>= <span style='color: #cfe111'>&#39;A&#39;</span> <span style='color: #ab492b'>and</span> symbol[<span style='color: #d12234'>1</span>] <span style='color: #ab492b'>&lt;</span>= <span style='color: #cfe111'>&#39;Z&#39;</span> then
+</td></tr>
+<tr><td class=line-number>573</td><td class=line>          <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>in</span> def_fn_list then
+</td></tr>
+<tr><td class=line-number>574</td><td class=line>            func_name <span style='color: #ab492b'>:=</span> symbol;
+</td></tr>
+<tr><td class=line-number>575</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>exec_function</span>(def_fn_list[func_name], symbol, line);
+</td></tr>
+<tr><td class=line-number>576</td><td class=line>            <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;function &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> func_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; is &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>577</td><td class=line>          <span style='color: #752091'>elsif</span> symbol <span style='color: #ab492b'>in</span> subfunction then
+</td></tr>
+<tr><td class=line-number>578</td><td class=line>            func_name <span style='color: #ab492b'>:=</span> symbol;
+</td></tr>
+<tr><td class=line-number>579</td><td class=line>            line_marker;
+</td></tr>
+<tr><td class=line-number>580</td><td class=line>            <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;**CALL FUNCTION &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> symbol);
+</td></tr>
+<tr><td class=line-number>581</td><td class=line>            symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>582</td><td class=line>            <span style='color: #752091'>if</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;(&quot;</span> then
+</td></tr>
+<tr><td class=line-number>583</td><td class=line>              <span style='color: #752091'>repeat</span>
+</td></tr>
+<tr><td class=line-number>584</td><td class=line>                symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>585</td><td class=line>              <span style='color: #752091'>until</span> symbol <span style='color: #ab492b'>=</span> <span style='color: #bf1f53'>&quot;)&quot;</span>;
+</td></tr>
+<tr><td class=line-number>586</td><td class=line>              symbol <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_symbol</span>(line);
+</td></tr>
+<tr><td class=line-number>587</td><td class=line>            <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>588</td><td class=line>            <span style='color: #3237c9'>set_return_position</span>(line);
+</td></tr>
+<tr><td class=line-number>589</td><td class=line>            gosubReturn[<span style='color: #d12234'>1</span>].subName <span style='color: #ab492b'>:=</span> func_name;
+</td></tr>
+<tr><td class=line-number>590</td><td class=line>            file_line_number <span style='color: #ab492b'>:=</span> subfunction[func_name];
+</td></tr>
+<tr><td class=line-number>591</td><td class=line>            line_marker;
+</td></tr>
+<tr><td class=line-number>592</td><td class=line>            <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;EXECUTE FUNCTION &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> func_name);
+</td></tr>
+<tr><td class=line-number>593</td><td class=line>            <span style='color: #3237c9'>incr</span>(file_line_number);
+</td></tr>
+<tr><td class=line-number>594</td><td class=line>            execLines;
+</td></tr>
+<tr><td class=line-number>595</td><td class=line>            file_line_number <span style='color: #ab492b'>:=</span> gosubReturn[<span style='color: #d12234'>1</span>]<span style='color: #32a852'></span><span style='color: #752091'></span>.returnLine;
+</td></tr>
+<tr><td class=line-number>596</td><td class=line>            gosubReturn <span style='color: #ab492b'>:=</span> gosubReturn[<span style='color: #d12234'>2</span> .. ];
+</td></tr>
+<tr><td class=line-number>597</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getNumericVar</span>(func_name);
+</td></tr>
+<tr><td class=line-number>598</td><td class=line>            line_marker;
+</td></tr>
+<tr><td class=line-number>599</td><td class=line>            <span style='color: #3237c9'>writeln</span>(log, <span style='color: #bf1f53'>&quot;RETURN FROM FUNCTION &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> func_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; -&gt; &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>600</td><td class=line>          <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>601</td><td class=line>            variable_name <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>get_name</span>(symbol, line);
+</td></tr>
+<tr><td class=line-number>602</td><td class=line>            exprResult <span style='color: #ab492b'>:=</span> <span style='color: #3237c9'>getNumericVar</span>(variable_name);
+</td></tr>
+<tr><td class=line-number>603</td><td class=line>            <span style='color: #3237c9'>writeln</span>(log, variable_name <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot; is &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> exprResult);
+</td></tr>
+<tr><td class=line-number>604</td><td class=line>          <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>605</td><td class=line>        <span style='color: #752091'>else</span>
+</td></tr>
+<tr><td class=line-number>606</td><td class=line>          error_marker;
+</td></tr>
+<tr><td class=line-number>607</td><td class=line>          <span style='color: #3237c9'>writeln</span>(err, <span style='color: #bf1f53'>&quot;UNEXPECTED SYMBOL &quot;</span> <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #3237c9'>literal</span>(symbol) <span style='color: #ab492b'>&lt;&amp;</span> <span style='color: #bf1f53'>&quot;.&quot;</span>);
+</td></tr>
+<tr><td class=line-number>608</td><td class=line>        <span style='color: #752091'>end</span> <span style='color: #752091'>if</span>;
+</td></tr>
+<tr><td class=line-number>609</td><td class=line>    end <span style='color: #752091'>case</span>;
+</td></tr>
+<tr><td class=line-number>610</td><td class=line>  <span style='color: #752091'>end</span> <span style='color: #32a852'><span style='color: #752091'>func</span></span>;
 </td></tr>
 </table>
 
