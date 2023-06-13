@@ -63,7 +63,7 @@
     }
   },
   {
-    "type": "array_call",
+    "type": "array",
     "named": true,
     "fields": {},
     "children": {
@@ -72,6 +72,69 @@
       "types": [
         {
           "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "array_call",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array",
           "named": true
         },
         {
@@ -1977,6 +2040,10 @@
         },
         {
           "type": "STD_NULL",
+          "named": true
+        },
+        {
+          "type": "array",
           "named": true
         },
         {

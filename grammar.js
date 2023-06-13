@@ -260,6 +260,8 @@ module.exports = grammar({
       $.empty,
       $.STD_NULL,
       $.forward,
+      // TODO array value
+      $.array
     ),
     dotdot: $ => '..',
     _expression: $ => prec.right(1, seq(
@@ -416,7 +418,7 @@ module.exports = grammar({
       )
     ),
     cast: $ => seq(
-      '+',
+      token.immediate('+'),
       choice($.type, $.castFunction),
     ),
     castFunction: $ => seq(
