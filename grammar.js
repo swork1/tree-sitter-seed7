@@ -1,6 +1,9 @@
 module.exports = grammar({
   name: 'seed7',
-  extras: $ => [/\s/, $.line_comment, $.block_comment],
+  extras: $ => [/\s/],
+  conflicts: $ => [
+    [$.hash_expression, $.type],
+  ],
   rules: {
     source_file: $ => repeat($._statement),
     _statement: $ => choice(
@@ -9,6 +12,8 @@ module.exports = grammar({
       $.declaration,
       $.func_declaration,
       $._expression,
+      $.line_comment,
+      $.block_comment,
     ),
     include_statement: $ => seq(
       optional('$'),
@@ -43,6 +48,23 @@ module.exports = grammar({
       $.repeat_block,
       $.func_block,
       $.if_block,
+      $.for_block,
+      $.case_block,
+    ),
+    case_block: $ => seq(
+      'case',
+      choice($._expression, $.value),
+      'of',
+      repeat1($.case_statement),
+      optional(seq('otherwise', ':', repeat1($._expression))),
+      'end case',
+      ';'
+    ),
+    case_statement: $ => seq(
+      'when',
+      $.set_expression,
+      ':',
+      repeat1($._expression),
     ),
     func_block: $ => prec.left(1, seq(
       'const',
@@ -60,7 +82,17 @@ module.exports = grammar({
       'end func',
       ';'
     )),
-  
+    for_block: $ => seq(
+      'for',
+      choice($._expression, $.value),
+      optional(seq('key', $.name)),
+      'range',
+      choice($._expression, $.value, seq(choice($._expression, $.value), 'downto', choice($._expression, $.value))),
+      'do',
+      repeat($._statement),
+      'end for',
+      ';',
+    ),
     proc_block: $ => prec.left(1, seq(
       'const',
       'proc',
@@ -85,7 +117,7 @@ module.exports = grammar({
     ),
     while_block: $ => seq(
       'while',
-      choice($._expression, $.value, $.name),
+      choice($._expression, $.value),
       'do',
       repeat($._statement),
       'end while',
@@ -93,7 +125,7 @@ module.exports = grammar({
     ),
     if_block: $ => seq(
       'if',
-      choice($._expression, $.value, $.name),
+      choice($._expression, $.value),
       'then',
       repeat($._statement),
       repeat($.esif_block),
@@ -103,7 +135,7 @@ module.exports = grammar({
     ),
     esif_block: $ => seq(
       'elsif',
-      choice($._expression, $.value, $.name),
+      choice($._expression, $.value),
       'then',
       repeat($._statement),
     ),
@@ -115,7 +147,7 @@ module.exports = grammar({
       'repeat',
       repeat($._statement),
       'until',
-      choice($._expression, $.value, $.name),
+      choice($._expression, $.value),
       ';'
     ),
     block_block: $ => seq(
@@ -157,15 +189,24 @@ module.exports = grammar({
       $.argument_list,
       ')',
     )),
+    array_call: $ => prec(1, seq(
+      choice($.name, $.type),
+      '[',
+      $.argument_list,
+      ']',
+    )),
     argument_list: $ => seq(
+      optional($.dotdot),
       choice($._expression, $.value),
       repeat(seq(
         ',',
         choice($._expression, $.value),
-      ))
+      )),
+      optional($.dotdot),
     ),
     type: $ => choice(
       field('array', seq('array', $.type)),
+      field('set', prec.left(1, seq('set of', $.type))),
       'boolean',
       'integer',
       'bigInteger',
@@ -176,7 +217,6 @@ module.exports = grammar({
       'char',
       'string',
       'hash',
-      'set',
       'struct',
       'bin64',
       'bin32',
@@ -216,6 +256,7 @@ module.exports = grammar({
       $.STD_NULL,
       $.forward,
     ),
+    dotdot: $ => '..',
     _expression: $ => prec.right(1, seq(
       choice(
         $.binary_expression,  
@@ -227,6 +268,7 @@ module.exports = grammar({
         $.set_expression,
         $.hash_expression,
         $.struct_expression,
+        $.array_call
       ),
       optional($.cast),
       optional(';')
@@ -316,7 +358,6 @@ module.exports = grammar({
       'mdiv',
       'mod',
       'times',
-      '..',
       '**',
       'lpad',
       'lpad0',
@@ -337,7 +378,13 @@ module.exports = grammar({
       '@:=',
       '><:=',
       '<&',
-      '<>'
+      '<>',
+      '=',
+      '&',
+      '..',
+      'rpad',
+      'to',
+      'in'
     ),
     unary_operator: $ => choice(
       'not',
@@ -374,6 +421,7 @@ module.exports = grammar({
     _hexLiteral: $ => /16#[0-9A-Fa-f]+/,
     _octalLiteral: $ => /8#[0-7]+/,
     _binaryLiteral: $ => /2#[01]+/,
+    // TODO FIX THIS STRING
     string: $ => seq(
       choice('"'),
       repeat(choice(

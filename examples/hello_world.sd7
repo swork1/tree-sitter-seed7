@@ -1,23 +1,2 @@
-const func boolean: runOrChain (in string: cmd, in string: name) is func
-  result
-    var boolean: successful is FALSE;
-  local
-    var file: infile is STD_NULL;
-  begin
-    if infile <> STD_NULL then
-      line_marker;
-      writeln(log, cmd <& " " <& literal(name));
-      prg := 0 times lineType.value;
-      label := label_hash.EMPTY_HASH;
-      subprogram := label_hash.EMPTY_HASH;
-      subfunction := label_hash.EMPTY_HASH;
-      sub_declared := label_hash.EMPTY_HASH;
-      usedLabel := stringSet.value;
-      usedAsStatement := stringSet.value;
-      multipleDefinedLabel := multipleDefinedType.value;
-      loadProg(name, infile);
-      prepareLoops;
-      close(infile);
-      successful := TRUE;
-    end if;
-  end func;
+
+const string: quotedString is "The quotes like \" and \' are written with an \\ before as in \\\" and \\\'.";

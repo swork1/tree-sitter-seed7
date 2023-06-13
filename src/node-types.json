@@ -8,11 +8,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "cast",
+          "named": true
+        },
+        {
+          "type": "dotdot",
           "named": true
         },
         {
@@ -49,6 +57,29 @@
         },
         {
           "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -100,6 +131,10 @@
           {
             "type": ";",
             "named": false
+          },
+          {
+            "type": "array_call",
+            "named": true
           },
           {
             "type": "binary_expression",
@@ -164,6 +199,10 @@
           {
             "type": ";",
             "named": false
+          },
+          {
+            "type": "array_call",
+            "named": true
           },
           {
             "type": "binary_expression",
@@ -231,6 +270,14 @@
           "named": true
         },
         {
+          "type": "case_block",
+          "named": true
+        },
+        {
+          "type": "for_block",
+          "named": true
+        },
+        {
           "type": "func_block",
           "named": true
         },
@@ -262,11 +309,19 @@
       "required": false,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -295,6 +350,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -333,6 +392,124 @@
     "type": "boolean",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "case_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_call",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "case_statement",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_call",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "cast",
@@ -381,6 +558,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "array_call",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -437,6 +618,11 @@
     }
   },
   {
+    "type": "dotdot",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "else_block",
     "named": true,
     "fields": {},
@@ -445,11 +631,19 @@
       "required": false,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -474,6 +668,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -542,11 +740,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -571,6 +777,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -613,11 +823,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -642,6 +860,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -677,7 +899,7 @@
     "fields": {}
   },
   {
-    "type": "func_block",
+    "type": "for_block",
     "named": true,
     "fields": {},
     "children": {
@@ -685,11 +907,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -714,6 +944,93 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "set_expression",
+          "named": true
+        },
+        {
+          "type": "struct_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "value_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_call",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "func_declaration",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_expression",
+          "named": true
+        },
+        {
+          "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -833,11 +1150,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -870,6 +1195,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -1009,6 +1338,10 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -1064,11 +1397,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -1093,6 +1434,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -1144,11 +1489,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -1173,6 +1526,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -1230,6 +1587,10 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -1284,6 +1645,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "array_call",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -1344,11 +1709,19 @@
       "required": false,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -1373,6 +1746,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -1443,6 +1820,20 @@
             "named": true
           }
         ]
+      },
+      "set": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "set of",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -1457,6 +1848,10 @@
           {
             "type": ";",
             "named": false
+          },
+          {
+            "type": "array_call",
+            "named": true
           },
           {
             "type": "binary_expression",
@@ -1608,11 +2003,19 @@
       "required": true,
       "types": [
         {
+          "type": "array_call",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "block_comment",
           "named": true
         },
         {
@@ -1637,6 +2040,10 @@
         },
         {
           "type": "include_statement",
+          "named": true
+        },
+        {
+          "type": "line_comment",
           "named": true
         },
         {
@@ -1680,6 +2087,10 @@
   },
   {
     "type": "$",
+    "named": false
+  },
+  {
+    "type": "&",
     "named": false
   },
   {
@@ -1779,6 +2190,10 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "><:=",
     "named": false
   },
@@ -1875,6 +2290,10 @@
     "named": false
   },
   {
+    "type": "case",
+    "named": false
+  },
+  {
     "type": "catch",
     "named": false
   },
@@ -1911,6 +2330,10 @@
     "named": false
   },
   {
+    "type": "downto",
+    "named": false
+  },
+  {
     "type": "duration",
     "named": false
   },
@@ -1931,7 +2354,15 @@
     "named": false
   },
   {
+    "type": "end case",
+    "named": false
+  },
+  {
     "type": "end enum",
+    "named": false
+  },
+  {
+    "type": "end for",
     "named": false
   },
   {
@@ -1975,6 +2406,10 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
     "type": "forward",
     "named": true
   },
@@ -2012,6 +2447,10 @@
   },
   {
     "type": "is",
+    "named": false
+  },
+  {
+    "type": "key",
     "named": false
   },
   {
@@ -2055,11 +2494,19 @@
     "named": false
   },
   {
+    "type": "of",
+    "named": false
+  },
+  {
     "type": "or",
     "named": false
   },
   {
     "type": "ord",
+    "named": false
+  },
+  {
+    "type": "otherwise",
     "named": false
   },
   {
@@ -2084,6 +2531,10 @@
   },
   {
     "type": "radix",
+    "named": false
+  },
+  {
+    "type": "range",
     "named": false
   },
   {
@@ -2119,11 +2570,11 @@
     "named": false
   },
   {
-    "type": "sci",
+    "type": "rpad",
     "named": false
   },
   {
-    "type": "set",
+    "type": "sci",
     "named": false
   },
   {
@@ -2159,6 +2610,10 @@
     "named": false
   },
   {
+    "type": "to",
+    "named": false
+  },
+  {
     "type": "type",
     "named": false
   },
@@ -2184,6 +2639,10 @@
   },
   {
     "type": "void",
+    "named": false
+  },
+  {
+    "type": "when",
     "named": false
   },
   {

@@ -4,7 +4,6 @@
 (function_call (name (variable) @function.method)) 
 (binary_operator) @operator
 (unary_operator) @operator
-(value_operator) @operator
 
 [
     "const"
