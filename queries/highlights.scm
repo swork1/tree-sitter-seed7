@@ -1,7 +1,6 @@
-(line_comment) @comment
-(block_comment) @comment
+(comment) @comment
 (include_statement) @include
-(function_call (name (variable) @function.method)) 
+(function_call) @function.method
 (binary_operator) @operator
 (unary_operator) @operator
 
